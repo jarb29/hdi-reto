@@ -3,7 +3,7 @@
 This guide outlines the setup and usage of Docker and Docker Compose for managing and deploying your FastAPI application. Additionally, it includes explanations of the provided `Makefile` which contains common commands for building and managing the Docker environment.
 
 
-![Dockerfile](images/d8.png)
+![Dockerfile](images/d7.png)
 
 ## Dockerfile
 

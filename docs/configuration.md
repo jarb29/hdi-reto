@@ -28,7 +28,7 @@ This document provides detailed information about the configuration settings and
 - [Glossary](#glossary)
 
 ---
-![Directory](images/d5.png)
+![Directory](images/d6.png)
 ---
 ## Introduction
 
