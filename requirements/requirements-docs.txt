@@ -1,2 +1,5 @@
 mkdocs
 mkdocs-rtd-dropdown
+mkdocs
+mkdocs-material
+mkdocstrings
