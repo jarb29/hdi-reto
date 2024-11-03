@@ -1,0 +1,14 @@
+services:
+  app:
+    container_name: HDI-Challenge
+    image: jarb29/hdi-challenge:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "8000"
+    command: >
+      uvicorn api.main:app --host ${HOST:-0.0.0.0} --port ${PORT:-8000}

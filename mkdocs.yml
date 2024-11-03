@@ -1,0 +1,19 @@
+site_name: HDI Challenge Documentation
+
+nav:
+  - Home: index.md
+  - Initialization: initialization.md
+  - Project: configuration.md
+  - API: api.md
+  - Commands: commands.md
+  - Deployment: deploy.md
+  - Stress Tests: stress_test.md
+  - Unit Tests: unit_test.md
+  - Coverage Tests: coverage.md
+  - Bandit Tests: bandit.md
+  - License: license.md
+
+plugins:
+  - mkdocstrings
+
+theme: readthedocs

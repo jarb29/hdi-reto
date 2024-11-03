@@ -1,0 +1,27 @@
+logger:
+  log_file: "logs/logger.log"
+  csv_file: "logs/logger.csv"
+  level: "INFO"
+  max_bytes: 10485760
+  backup_count: 5
+
+models:
+  model_path: "models/linear_regression.pkl"
+
+pipeline:
+  imputacion_path: "artifacts/imputations.json"
+  steps:
+    - name: "Step 1"
+      pipeline: "pipes/pipeline_1.pkl"
+    - name: "Step 2"
+      pipeline: "pipes/pipeline_2.pkl"
+    - name: "Step 3"
+      pipeline: "pipes/pipeline_3.pkl"
+    - name: "Step 4"
+      pipeline: "pipes/pipeline_4.pkl"
+    - name: "Step 5"
+      pipeline: "pipes/pipeline_5.pkl"
+
+api:
+  host: ${env:HOST}
+  port: ${env:PORT}

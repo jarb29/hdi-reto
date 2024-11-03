@@ -1,0 +1,10 @@
+*.venv/
+app/__pycache__/
+modules/__pycache__/
+utils/__pycache__/
+notebooks/.ipynb_checkpoints/
+.ruff_cache/
+.pytest_cache/
+.vscode
+.idea
+.DS_Store

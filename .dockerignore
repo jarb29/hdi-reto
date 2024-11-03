@@ -1,0 +1,25 @@
+# Directories
+.venv/
+.vscode/
+.idea/
+.DS_Store/
+.github/
+.git/
+**/__pycache__/
+tests/
+notebooks/
+logs/
+#docs/
+misc/
+data/
+
+# Config files
+.gitignore
+.gitattributes
+.env
+.pre-commit-config.yaml
+mkdocs.yml
+pyproject.toml
+Makefile
+requirements/requirements_dev.txt
+requirements/requirements_docs.txt

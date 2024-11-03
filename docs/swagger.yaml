@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "HDI Claims Prediction API"
+  description: "API for predicting repair time and training models"
+servers:
+  - url: "http://127.0.0.1:8000"
+paths:
+  /:
+    get:
+      summary: "Check if the API is up and running"
+      description: "This endpoint is used to check if the API server is running. If the server is up, it returns a welcome message."
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Bienvenido al API de predicción de siniestros de HDI"
+  /api/v1/predict/:
+    post:
+      summary: "Predicts the repair time for a given claim"
+      description: "This endpoint predicts the repair time for a given claim based on various parameters."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                claim_id:
+                  type: integer
+                  example: 123
+                marca_vehiculo:
+                  type: string
+                  example: "Toyota"
+                antiguedad_vehiculo:
+                  type: integer
+                  example: 5
+                tipo_poliza:
+                  type: integer
+                  example: 2
+                taller:
+                  type: integer
+                  example: 10
+                partes_a_reparar:
+                  type: integer
+                  example: 2
+                parte_a_reemplazar:
+                  type: integer
+                  example: 1
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  prediccion:
+                    type: number
+                    example: 2.5
+        '400':
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "400"
+                  message:
+                    type: string
+                    example: "Bad Request"
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "500"
+                  message:
+                    type: string
+                    example: "Internal Server Error (See logs for details)"
+  /api/v1/train/:
+    post:
+      summary: "Endpoint for training the model"
+      description: "This endpoint allows for training the model using a provided dataset file."
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: "Training successful"
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Training successful"
+        '422':
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "422"
+                  message:
+                    type: string
+                    example: "Validation Error"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
