@@ -24,7 +24,8 @@ This document provides detailed information about the configuration settings and
   - [data](#data-data)
   - [config](#config-configconfigyaml)
   - [artifacts](#artifacts-artifactsimputationsjson)
-  - [app](#app-appimputationpy)
+  - [modules](#modules)
+  - [app](#app)
 - [Deployment Instructions](#deployment-instructions)
 - [Common Issues and Troubleshooting](#common-issues-and-troubleshooting)
 - [Glossary](#glossary)
@@ -38,7 +39,7 @@ Welcome to the configuration documentation for the HDI Claims Prediction API. Th
 
 ## Configurations 
 
-![Confiurations](images/d1.png)
+![Configurations](images/d1.png)
 
 ### Logger Configuration
 
@@ -522,60 +523,193 @@ artifacts/
   └── imputations.json         # Imputation details
 # 1 directory, 1 file
 ```
+### modules
 
-### app `app/imputation.py`
+Contains various utility modules used throughout the project.
 
-Main application code directory. Contains sub-directories and modules necessary for running the application.
+```yaml
+modules/
+  ├── __init__.py              # Initialization file for Python package
+  ├── config_manager.py        # Configuration management utility
+  ├── imputation.py            # Data imputation utility
+  ├── logger_manager.py        # Logging configuration and management
+  ├── mlflow.py                # ML model loading and saving functions
+  └── preprocessing.py         # Data preprocessing functions
+# 1 directory, 6 files
+```
+
+#### Detailed Descriptions of Principal Codes:
+
+##### `modules/__init__.py`
+
+Initialization file to make the `modules` directory a valid Python package:
+
+```python
+# modules/__init__.py
+```
+
+##### `modules/config_manager.py`
+
+Manages the configuration of the application using Hydra:
+
+```python
+import hydra
+from omegaconf import DictConfig
+
+def init_config() -> DictConfig:
+    """
+    Initialize and return the Hydra configuration.
+    """
+    return OmegaConf.load('config/config.yaml')
+```
+### app
+
+Main application code directory `app/main.py`. Contains sub-directories and modules necessary for running the application.
 
 ```yaml
 app/
-  └── imputation.py            # Code for data imputation
+  └── main.py            # Main application entry point
 # 1 directory, 1 file
 ```
+#### Principal Code: `main.py`
 
-#### Principal Code: `imputation.py`
+The `main.py` file contains the main entry point for the FastAPI application. It sets up and initializes the application configuration, logging, and routes. The key functions and components include:
 
-The `imputation.py` file contains the main logic for data imputation using a custom transformer. It uses the Hydra configuration management framework to manage configurations, such as dictionary values for imputing missing data. The main components include:
-
-- **CustomImputer Class:** A custom transformer that fills missing values with specified values.
-- **Pipeline Integration:** Incorporates the `CustomImputer` and `StandardScaler` into a scikit-learn `Pipeline`.
-- **DataFrame Example:** Provides an example DataFrame and applies the pipeline to this DataFrame, demonstrating how missing values are imputed and data is scaled.
+- **FastAPI Initialization:** Sets up the FastAPI application instance.
+- **Custom OpenAPI Schema:** Loads the OpenAPI schema from a YAML file.
+- **Configuration Initialization:** Loads application configuration using Hydra.
+- **Logger Initialization:** Configures and sets up the global logger.
+- **Route Inclusion:** Adds prediction and training routes to the FastAPI application.
 
 Example usage:
 
 ```python
-import hydra
-from omegaconf import DictConfig, OmegaConf
-import pandas as pd
 import numpy as np
-from sklearn.base import TransformerMixin
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
+import pandas as pd
+import uvicorn
+from fastapi import FastAPI
+import yaml  # Use PyYAML to parse YAML content
 
-class CustomImputer(TransformerMixin):
-    def __init__(self, fill_values):
-        self.fill_values = fill_values
+from modules import init_config, setup_logger, get_logger
+from routes import predict, train
 
-    def fit(self, X, y=None):
-        return self
+# Initialize FastAPI
+app = FastAPI()
 
-    def transform(self, X):
-        X = X.copy()
-        for col, value in self.fill_values.items():
-            X[col] = X[col].fillna(value)
-        return X
+def custom_openapi():
+    # Assuming swagger.yaml is in the /app/docs/ directory
+    if app.openapi_schema:
+        return app.openapi_schema
+    with open("/app/docs/swagger.yaml", "r") as file:
+        swagger_content = yaml.safe_load(file)  # Use yaml.safe_load to load the YAML file
+    app.openapi_schema = swagger_content
+    return swagger_content  # Directly return the dictionary
 
-@hydra.main(version_base=None, config_path="../data", config_name="config")
-def main(cfg: DictConfig):
-    diccionario_imputacion = cfg.diccionario_imputacion
+app.openapi = custom_openapi
 
-    pipeline = Pipeline([
-        ('imputer', CustomImputer(diccionario_imputacion)),
-        ('scaler', StandardScaler())
-    ])
+# Initialize configuration
+cfg = init_config()
+app.state.cfg = cfg
 
-    df = pd.DataFrame({
-        'log_total_piezas': [np.nan, 2.3, 4.5],
-        'marca_vehiculo_encoded': [1, np.nan, 3],
-        'valor_vehiculo': [4500, 3000, np.nan],
-        'valor_por
+# Initialize logger
+setup_logger(cfg)
+app.state.logger = get_logger()
+app.state.logger.info("Logger initialized in global mode.")
+
+# Add routes
+app.include_router(predict)
+app.include_router(train)
+
+@app.get("/")
+def root():
+    return {"message": "Welcome to the HDI Claims Prediction API"}
+
+if __name__ == "__main__":
+    imputacion_path = cfg.pipeline.imputacion_path
+    print(f"Using the imputation file located at: {imputacion_path}")
+
+    # Start FastAPI
+    uvicorn.run(app, host=cfg.api.host, port=cfg.api.port)
+```
+
+### Key Components
+
+1. **FastAPI Initialization:**
+    - The `FastAPI` class is imported and an instance is created which will serve as the main application object.
+
+2. **Custom OpenAPI Schema:**
+    - The `custom_openapi` function loads the OpenAPI schema from a `swagger.yaml` file located in the `/app/docs/` directory using PyYAML's `safe_load` method to parse the YAML content.
+
+3. **Configuration Initialization:**
+    - The `init_config` function loads the application configuration using Hydra. The configuration object is stored in the state of the FastAPI application.
+
+    ```python
+    cfg = init_config()
+    app.state.cfg = cfg
+    ```
+
+4. **Logger Initialization:**
+    - The `setup_logger` function is used to set up the logging configuration based on the loaded application configuration. The logger is then retrieved and stored in the state of the FastAPI application.
+
+    ```python
+    setup_logger(cfg)
+    app.state.logger = get_logger()
+    app.state.logger.info("Logger initialized in global mode.")
+    ```
+
+5. **Route Inclusion:**
+    - The `predict` and `train` routers are imported and included in the FastAPI application. These routers define the endpoints for prediction and training functionality.
+
+    ```python
+    app.include_router(predict)
+    app.include_router(train)
+    ```
+
+6. **Root Endpoint:**
+    - A root endpoint is defined to return a welcome message.
+
+    ```python
+    @app.get("/")
+    def root():
+        return {"message": "Welcome to the HDI Claims Prediction API"}
+    ```
+
+7. **Application Entry Point:**
+    - The `if __name__ == "__main__":` block allows the FastAPI application to be run directly. It prints the path to the imputation file and starts the FastAPI server using `uvicorn`.
+
+    ```python
+    if __name__ == "__main__":
+        imputacion_path = cfg.pipeline.imputacion_path
+        print(f"Using the imputation file located at: {imputacion_path}")
+
+        # Start FastAPI
+        uvicorn.run(app, host=cfg.api.host, port=cfg.api.port)
+    ```
+
+---
+
+## Deployment Instructions
+
+For detailed deployment instructions, please refer to the `deploy.md` file in the `docs` directory.
+
+---
+
+## Common Issues and Troubleshooting
+
+### Issue: Model Not Loading
+
+If the model is not loading, ensure the `model_path` in the configuration file `config/config.yaml` is correct and the model file exists at the specified location.
+
+### Issue: API Not Starting
+
+If the API is not starting, check the host and port settings in the `api` section of the configuration file and ensure there are no conflicts with other services running on the same port.
+
+---
+
+## Glossary
+
+- **Imputation:** The process of filling in missing data with substituted values.
+- **Pipeline:** A sequence of data processing steps.
+- **Logger:** A tool used to record messages and track events within an application.
+- **API:** Application Programming Interface, a set of functions allowing the creation of applications that access features or data of an operating system, application, or service.
+

@@ -56,17 +56,6 @@ Locust provides charts and reports on RPS, response times, and failures. Analyze
 
 ---
 
-### Key Improvements
-
-- **Separate Files**: The content is split into `unit_tests.md` and `stress_tests.md`, making the documentation modular.
-- **Detailed Explanations**: Includes descriptions of the testing framework, how to run tests, and how to analyze results.
-- **Code Examples**: Provides Python code examples for unit tests and the Locust file.
-- **MkDocs-Ready**: Uses consistent heading levels and formatting suitable for MkDocs.
-- **Clear and Concise**: Information is presented clearly and concisely. The example code within the Locust file is condensed with a comment for clarity and conciseness in the documentation. Full implementation details would be found in the actual `locustfile.py`.
-- **Cross-Referencing**: The main `test.md` should link to these separate files, providing a brief overview and directing users to the detailed documentation when needed.
-
----
-
 # Stress Test Results Analysis
 
 ## Requests per Second (RPS)
