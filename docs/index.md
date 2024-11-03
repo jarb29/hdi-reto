@@ -2,6 +2,7 @@
 
 Welcome to **HDI Challenge**! This solution is designed to tackle complex prediction and data analysis challenges in the realms of artificial intelligence and machine learning.
 
+![Directory](images/d9.png)
 ## What is HDI Challenge?
 
 **HDI Challenge** is a project focused on solving prediction problems using advanced machine learning techniques. It provides a robust infrastructure for model creation, data preprocessing, and seamless integration with deployment systems.

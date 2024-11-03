@@ -3,6 +3,9 @@
 This guide provides comprehensive instructions for deploying the HDI Claims Prediction API. The API is built using FastAPI and utilizes a pre-trained Scikit-learn model. This document covers both standard deployment without Docker as well as deployment using a Docker image.
 
 ---
+![Dockerfile](images/d11.png)
+---
+
 
 ## Prerequisites
 

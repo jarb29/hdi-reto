@@ -11,7 +11,7 @@ nav:
   - Unit Tests: unit_test.md
   - Coverage Tests: coverage.md
   - Bandit Tests: bandit.md
-  - License: license.md
+  - License: licence.md
 
 plugins:
   - mkdocstrings

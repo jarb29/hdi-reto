@@ -3,6 +3,8 @@
 This document provides detailed information about the configuration settings and directory structure used in the HDI Claims Prediction API.
 
 ---
+![Directory](images/d6.png)
+---
 
 ## Table of Contents
 
@@ -28,15 +30,15 @@ This document provides detailed information about the configuration settings and
 - [Glossary](#glossary)
 
 ---
-![Directory](images/d6.png)
----
 ## Introduction
 
 Welcome to the configuration documentation for the HDI Claims Prediction API. This guide aims to provide you with all the necessary information to configure and understand the layout of the project.
 
 ---
 
-## Configurations ![Confiurations](images/d1.png)
+## Configurations 
+
+![Confiurations](images/d1.png)
 
 ### Logger Configuration
 

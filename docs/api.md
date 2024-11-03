@@ -1,7 +1,9 @@
 # HDI Claims Prediction API Documentation
 
-Inspired by Swagger API docs style & structure
+Inspired by the style and structure of Swagger API documentation, this document aims to provide a clear and organized reference. For an interactive API documentation, please visit after running the service http://127.0.0.1:8000/redoc` 
 
+---
+![Confiurations](images/d10.png)
 ---
 
 ## Table of Contents
