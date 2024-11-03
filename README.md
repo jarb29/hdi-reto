@@ -15,7 +15,7 @@ Este repositorio contiene el código de la solución del desafío de HDI.
 - [X] Validar los resultados para los diferentes tipos de pólizas
 - [X] Integrar pruebas de estrés para la API
 - [X] Realizar pruebas con casos de entrada
-- [ ] Documentar el proceso
+- [X] Documentar el proceso
 - [X] Implementar logging para manejo de errores
 
 ## Installation
