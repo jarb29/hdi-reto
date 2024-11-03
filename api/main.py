@@ -10,24 +10,33 @@ from routes import predict, train
 # Inicialize FastAPI
 app = FastAPI()
 
-def custom_openapi():
-    # Assuming swagger.yaml is in the /app/docs/ directory
-    if app.openapi_schema:
-        return app.openapi_schema
-    with open("/app/docs/swagger.yaml", "r") as file:
-        swagger_content = yaml.safe_load(file)  # Use yaml.safe_load to load the YAML file
-    app.openapi_schema = swagger_content
-    return swagger_content  # Directly return the dictionary
 
-
-
-app.openapi = custom_openapi
 
 
 # Inicialize configuration
 cfg = init_config()
+
 app.state.cfg = cfg
 
+
+def custom_openapi():
+    cf = app.state.cfg
+    if app.openapi_schema:
+        return app.openapi_schema
+    try:
+        with open(cf['api']['doc'], "r") as file:
+            swagger_content = yaml.safe_load(file)  # Use yaml.safe_load to load the YAML file
+            app.openapi_schema = swagger_content
+            return app.openapi_schema
+    except Exception as e:
+        # Log the error and provide an informative response
+        app.state.logger.error(f"Error loading OpenAPI schema from file {cf['api']['doc']}", exc_info=True)
+        return JSONResponse({"error": f"Failed to load OpenAPI schema: {str(e)}"}, status_code=500)
+
+
+
+# Set the custom OpenAPI generation function
+app.openapi = custom_openapi
 # Inicialize logger
 setup_logger(cfg)
 app.state.logger = get_logger()

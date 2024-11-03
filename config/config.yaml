@@ -25,3 +25,4 @@ pipeline:
 api:
   host: ${env:HOST}
   port: ${env:PORT}
+  doc: "swagger.yaml"

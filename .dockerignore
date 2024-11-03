@@ -9,7 +9,7 @@
 tests/
 notebooks/
 logs/
-#docs/
+docs/
 misc/
 data/
 
