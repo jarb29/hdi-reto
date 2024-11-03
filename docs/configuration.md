@@ -690,7 +690,7 @@ if __name__ == "__main__":
 
 ## Deployment Instructions
 
-For detailed deployment instructions, please refer to the `deploy.md` file in the `docs` directory.
+For detailed deployment instructions, please refer to the [deploy.md](docs/deploy.md) file in the `docs` directory.
 
 ---
 
