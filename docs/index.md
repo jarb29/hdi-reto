@@ -6,7 +6,7 @@ Welcome to **HDI Challenge**! This solution is designed to tackle complex predic
 
 **HDI Challenge** is a project focused on solving prediction problems using advanced machine learning techniques. It provides a robust infrastructure for model creation, data preprocessing, and seamless integration with deployment systems.
 
-This project is designed to simplify the development of solutions that involve massive data processing, advanced preprocessing, and the implementation of predictive models using tools such as ONNX, Scikit-learn, and FastAPI.
+This project is designed to simplify the development of solutions that involve massive data processing, advanced preprocessing, and the implementation of predictive models using tools such as Scikit-learn, and FastAPI.
 
 ## Key Features
 

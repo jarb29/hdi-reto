@@ -13,22 +13,22 @@ This document provides detailed information about the configuration settings and
   - [Pipeline Configuration](#pipeline-configuration)
   - [API Host Configuration](#api-host-configuration)
 - [Directory Structure](#directory-structure)
-  - [requirements](#requirements)
-  - [test](#test)
-  - [routes](#routes)
-  - [pipes](#pipes)
-  - [models](#models)
-  - [docs](#docs)
-  - [data](#data)
-  - [config](#config)
-  - [artifacts](#artifacts)
-  - [app](#app)
+  - [requirements](#requirements-requirementsrequirementstxt)
+  - [test](#test-testtest_functionspy)
+  - [routes](#routes-routespredictpy)
+  - [pipes](#pipes-pipes)
+  - [models](#models-modelslinear_regressionpkl)
+  - [docs](#docs-docsmd)
+  - [data](#data-data)
+  - [config](#config-configconfigyaml)
+  - [artifacts](#artifacts-artifactsimputationsjson)
+  - [app](#app-appimputationpy)
 - [Deployment Instructions](#deployment-instructions)
 - [Common Issues and Troubleshooting](#common-issues-and-troubleshooting)
 - [Glossary](#glossary)
 
 ---
-![Directory](images/d2.png)
+![Directory](images/d5.png)
 ---
 ## Introduction
 
@@ -38,10 +38,10 @@ Welcome to the configuration documentation for the HDI Claims Prediction API. Th
 
 ## Configurations ![Confiurations](images/d1.png)
 
-
 ### Logger Configuration
 
 The logging configuration specifies where and how logs should be stored and rotated. You can find the configuration in the `config/config.yaml` file.
+
 #### Configuration
 
 ```yaml
@@ -148,18 +148,15 @@ pipeline:
 Loading and using the pipeline:
 
 ```python
+# pipeline steps
+for step in cfg.pipeline.steps:
+    logger.info(f"Ejecutando {step.name} con pipeline: {step.pipeline}")
+    df = pipeline_run(df, step.pipeline)
 
-    # pipeline steps
-    for step in cfg.pipeline.steps:
-        logger.info(f"Ejecutando {step.name} con pipeline: {step.pipeline}")
-        df = pipeline_run(df, step.pipeline)
-
-
-    # Cargar el pipeline
-    logger.info(f"Cargando el pipeline: {abs_pipeline_file}")
-    with open(abs_pipeline_file, 'rb') as file:
-        pipeline = dill.load(file)
-
+# Cargar el pipeline
+logger.info(f"Cargando el pipeline: {abs_pipeline_file}")
+with open(abs_pipeline_file, 'rb') as file:
+    pipeline = dill.load(file)
 ```
 
 ---
@@ -437,7 +434,6 @@ async def train(file: UploadFile = File(...)):
     except Exception as e:
         logger.error(f"Error en el entrenamiento: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error en el entrenamiento: {str(e)}")
-
 ```
 
 ### pipes `pipes/*.pkl`
@@ -580,131 +576,4 @@ def main(cfg: DictConfig):
         'log_total_piezas': [np.nan, 2.3, 4.5],
         'marca_vehiculo_encoded': [1, np.nan, 3],
         'valor_vehiculo': [4500, 3000, np.nan],
-        'valor_por_pieza': [200, np.nan, 300],
-        'antiguedad_del_vehiculo': [5, 3, 8]
-    })
-
-    df_transformed = pipeline.fit_transform(df)
-    print(df_transformed)
-
-if __name__ == "__main__":
-    main()
-```
-
----
-
-## Deployment Instructions
-
-For detailed deployment instructions, please refer to the `deploy.md` file in the `docs` directory.
-
----
-
-## Common Issues and Troubleshooting
-
-### Issue: Model Not Loading
-
-If the model is not loading, ensure the `model_path` in the configuration file `config/config.yaml` is correct and the model file exists at the specified location.
-
-### Issue: API Not Starting
-
-If the API is not starting, check the host and port settings in the `api` section of the configuration file and ensure there are no conflicts with other services running on the same port.
-
----
-
-## Glossary
-
-- **Imputation:** The process of filling in missing data with substituted values.
-- **Pipeline:** A sequence of data processing steps.
-- **Logger:** A tool used to record messages and track events within an application.
-- **API:** Application Programming Interface, a set of functions allowing the creation of applications that access features or data of an operating system, application, or service.
-
-
-## Lo que deberia
-```yaml
-hdi-claims-prediction-api/
-├── src/                      # Source code
-│   ├── __init__.py
-│   ├── api/                # API related code
-│   │   ├── __init__.py
-│   │   ├── main.py          # Main FastAPI app
-│   │   ├── routes/
-│   │   │   ├── __init__.py
-│   │   │   └── predict.py     # Prediction endpoint
-│   │   └── models/         # Pydantic models for API
-│   │       ├── __init__.py
-│   │       └── claim.py
-│   ├── data/               # Data loading and preprocessing
-│   │   ├── __init__.py
-│   │   └── preprocessing.py  # Use tf.data here ideally
-│   ├── model/              # TensorFlow model and training
-│   │   ├── __init__.py
-│   │   ├── model.py        # Define TensorFlow model architecture
-│   │   └── train.py         # TensorFlow training loop
-│   └── utils/              # Utility functions
-│       ├── __init__.py
-│       └── logger.py
-├── models/                  # Saved TensorFlow models
-│   └── ... (saved_model.pb, variables, etc.)
-├── data/                    # Data files
-│   └── claims_dataset.csv
-├── config/                  # Configuration
-│   └── config.yaml
-├── tests/                   # Tests
-│   ├── __init__.py
-│   ├── test_api.py
-│   ├── test_preprocessing.py
-│   └── test_model.py
-├── docs/                    # Documentation
-│   └── ...
-├── requirements/             # Dependencies
-│   └── requirements.txt
-├── Dockerfile
-└── pyproject.toml
-
-```
-## Lo que tenemos
-
-```yaml
-hdi-claims-prediction-api/
-├── api/
-│   └── main.py
-├── app/
-│   └── imputation.py
-├── artifacts/
-│   └── imputations.json
-├── config/
-│   └── config.yaml
-├── data/
-│   ├── claims_dataset.csv
-│   └── config.yaml  (Unclear why data config is here)
-├── docs/
-│   └── ...
-├── misc/
-│   ├── desafio-tecnico-MLE-HDI-Seguros.pdf
-│   └── documentacion.md
-├── models/
-│   ├── claim_model.py  (Should this be a TensorFlow model definition?)
-│   ├── linear_regression.pkl
-│   ├── train_model.py
-│   └── __init__.py
-├── modules/
-│   ├── config_manager.py
-│   ├── imputation.py (Duplicate of app/imputation.py?)
-│   ├── logger_manager.py
-│   ├── mlflow.py
-│   ├── preprocessing.py
-│   └── __init__.py
-├── pipes/
-│   ├── pipeline_1.pkl
-│   └── ... (more pipeline pickles)
-├── requirements/
-│   └── ...
-├── routes/
-│   ├── predict.py
-│   ├── train.py
-│   └── __init__.py
-└── tests/
-    └── ...
-
-
-```
+        'valor_por

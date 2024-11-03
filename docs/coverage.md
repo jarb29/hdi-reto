@@ -16,7 +16,7 @@ The following tables provide a more granular view of the coverage, broken down b
 
 ### Files
 
-![Coverage by File](images/coverag1.png)
+![Coverage by File](images/O1.png)
 
 This view shows the coverage for each file in the project. Files like `modules/__init__.py`, `modules/config_manager.py`, and `modules/imputation.py` have achieved 100% coverage. However, `modules/mlflow.py` and `modules/logger_manager.py` have lower coverage, indicating areas that require more testing.
 
@@ -24,7 +24,7 @@ This view shows the coverage for each file in the project. Files like `modules/_
 
 ### Classes
 
-![Coverage by Class](images/coverag3.png)
+![Coverage by Class](images/O3.png)
 
 This view shows the coverage by class. Since most of the files don't define classes (indicated by "(no class)"), this view doesn't provide much additional information beyond the file-level view in this specific case.
 
@@ -32,7 +32,7 @@ This view shows the coverage by class. Since most of the files don't define clas
 
 ### Functions
 
-![Coverage by Function](images/coverag2.png)
+![Coverage by Function](images/O2.png)
 
 This view provides the most detailed breakdown, showing the coverage for individual functions. This helps pinpoint specific functions with low coverage, such as `log_to_csv` and `get_logger` within `modules/logger_manager.py`, and `train_model` in `modules/mlflow.py`. These functions should be prioritized for further testing.
 
