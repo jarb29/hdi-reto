@@ -30,7 +30,7 @@ def pipeline_run(df, pipeline_file):
     # Cargar el pipeline
     logger.info(f'Cargando el pipeline: {abs_pipeline_file}')
     with open(abs_pipeline_file, 'rb') as file:
-        pipeline = dill.load(file)  # nosec B301
+        pipeline = dill.load(file)
 
     if hasattr(pipeline, '__globals__'):
         pipeline.__globals__['np'] = np
