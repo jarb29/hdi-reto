@@ -2,6 +2,8 @@
 
 This guide will help you get started with building and deploying your application using Docker. It includes instructions for both using `make` and directly with `docker-compose`. Additionally, troubleshooting steps are provided if you encounter issues with Docker.
 
+---
+
 ## Using `make` Commands
 
 ### Step 1: Build Docker Image
@@ -21,6 +23,8 @@ make deploy
 ```bash
 make deploy-stop
 ```
+
+---
 
 ## Using `docker-compose` Commands Directly
 
@@ -42,18 +46,22 @@ docker-compose up -d
 docker-compose down
 ```
 
+---
+
 ## Troubleshooting Docker Issues
 
 If Docker does not work as expected, follow these steps to diagnose and resolve common issues.
+
+---
 
 ### Check Docker Service
 
 Ensure that the Docker service is running.
 
 - **On Windows:**
-    - Open Docker Desktop and check the status.
+  - Open Docker Desktop and check the status.
 - **On macOS:**
-    - Open Docker Desktop and check the status.
+  - Open Docker Desktop and check the status.
 - **On Linux:**
 
   ```bash
@@ -66,6 +74,8 @@ If the service is not running, you can start it with:
 sudo systemctl start docker
 ```
 
+---
+
 ### Verify Docker Installation
 
 Check if Docker is installed and running correctly:
@@ -74,6 +84,8 @@ Check if Docker is installed and running correctly:
 docker --version
 docker-compose --version
 ```
+
+---
 
 ### Check Docker Permissions
 
@@ -87,6 +99,8 @@ Ensure your user has the necessary permissions to run Docker commands.
 
   After running the above command, log out and log in again or restart your computer.
 
+---
+
 ### Inspect Docker Logs
 
 Check Docker logs for any errors:
@@ -95,9 +109,13 @@ Check Docker logs for any errors:
 docker logs <container_id_or_name>
 ```
 
+---
+
 ### Network Issues
 
 Ensure that you have a stable network connection as Docker requires internet access to download images.
+
+---
 
 ### Prune Docker System
 

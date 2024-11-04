@@ -2,8 +2,8 @@ site_name: HDI Challenge Documentation
 
 nav:
   - Home: index.md
-  - Initialization Guide: initialization.md
   - Quick Start Guide: quickstart.md
+  - Initialization Guide: initialization.md
   - Project Configuration: configuration.md
   - API Reference: api.md
   - Command Line Interface: commands.md
