@@ -2,6 +2,8 @@
 
 This guide will help you get started with building and deploying your application using Docker. It includes instructions for both using `make` and directly with `docker-compose`. Additionally, troubleshooting steps are provided if you encounter issues with Docker.
 
+**Repository:** [https://github.com/jarb29/hdi-reto](https://github.com/jarb29/hdi-reto)
+
 ---
 
 ## Initial Setup: Create Directory and Clone Repository
@@ -20,7 +22,7 @@ cd my_project
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/yourrepository.git
+git clone https://github.com/jarb29/hdi-reto
 cd yourrepository
 ```
 
