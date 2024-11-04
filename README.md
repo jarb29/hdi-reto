@@ -56,7 +56,7 @@ To test the API, you can use the file `data/claims_dataset.csv` as input.
 
 ## Documentation
 
-You can access the full project documentation [here](https://github.com/jarb29/hdi-reto).
+You can access the full project documentation [here](https://jarb29.github.io/hdi-reto/).
 
 ## Dockerfile
 
