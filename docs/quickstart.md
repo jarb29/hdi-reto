@@ -4,9 +4,33 @@ This guide will help you get started with building and deploying your applicatio
 
 ---
 
+## Initial Setup: Create Directory and Clone Repository
+
+### Step 1: Create Directory
+
+Create a directory for your project:
+
+```bash
+mkdir my_project
+cd my_project
+```
+
+### Step 2: Clone the Repository
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/yourrepository.git
+cd yourrepository
+```
+
+---
+
 ## Using `make` Commands
 
 ### Step 1: Build Docker Image
+
+Inside the directory, run:
 
 ```bash
 make build
@@ -14,11 +38,15 @@ make build
 
 ### Step 2: Deploy the Application
 
+Inside the directory, run:
+
 ```bash
 make deploy
 ```
 
 ### Step 3: Stop the Deployed Application
+
+Inside the directory, run:
 
 ```bash
 make deploy-stop
@@ -30,17 +58,23 @@ make deploy-stop
 
 ### Step 1: Build Docker Image
 
+Inside the directory, run:
+
 ```bash
 docker-compose build
 ```
 
 ### Step 2: Deploy the Application
 
+Inside the directory, run:
+
 ```bash
 docker-compose up -d
 ```
 
 ### Step 3: Stop the Deployed Application
+
+Inside the directory, run:
 
 ```bash
 docker-compose down
