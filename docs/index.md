@@ -3,11 +3,16 @@
 Welcome to **HDI Challenge**! This solution is designed to tackle complex prediction and data analysis challenges in the realms of artificial intelligence and machine learning.
 
 ![Directory](images/d9.png)
+---
+**Repository:** [https://github.com/jarb29/hdi-reto](https://github.com/jarb29/hdi-reto)
+
+---
 ## What is HDI Challenge?
 
 **HDI Challenge** is a project focused on solving prediction problems using advanced machine learning techniques. It provides a robust infrastructure for model creation, data preprocessing, and seamless integration with deployment systems.
 
 This project is designed to simplify the development of solutions that involve massive data processing, advanced preprocessing, and the implementation of predictive models using tools such as Scikit-learn, and FastAPI.
+
 
 ## Key Features
 
