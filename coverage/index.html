@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Coverage Test - HDI Challenge Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Coverage Test";
+        var mkdocs_page_input_path = "coverage.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HDI Challenge Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../initialization/">Initialization Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../configuration/">Project Configuration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Line Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../deploy/">Standard Deployment Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../stress_test/">Load Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unit_test/">Unit Testing</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Coverage Test</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detailed-breakdown">Detailed Breakdown</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#files">Files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bandit/">Security Analysis</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../licence/">License Agreement</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HDI Challenge Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Coverage Test</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="coverage-report-summary">Coverage Report Summary</h1>
+<p>This report summarizes the code coverage achieved during testing. The overall coverage is <strong>80%</strong>.</p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>The report was generated using <code>coverage.py v7.6.4</code> on <code>2024-11-02 13:20 +0000</code>. A total of 171 statements were analyzed, with 34 missing. No statements were excluded.</p>
+<hr />
+<h2 id="detailed-breakdown">Detailed Breakdown</h2>
+<p>The following tables provide a more granular view of the coverage, broken down by files, classes, and functions.</p>
+<h3 id="files">Files</h3>
+<p><img alt="Coverage by File" src="../images/O1.png" /></p>
+<p>This view shows the coverage for each file in the project. Files like <code>modules/__init__.py</code>, <code>modules/config_manager.py</code>, and <code>modules/imputation.py</code> have achieved 100% coverage. However, <code>modules/mlflow.py</code> and <code>modules/logger_manager.py</code> have lower coverage, indicating areas that require more testing.</p>
+<hr />
+<h3 id="classes">Classes</h3>
+<p><img alt="Coverage by Class" src="../images/O3.png" /></p>
+<p>This view shows the coverage by class. Since most of the files don't define classes (indicated by "(no class)"), this view doesn't provide much additional information beyond the file-level view in this specific case.</p>
+<hr />
+<h3 id="functions">Functions</h3>
+<p><img alt="Coverage by Function" src="../images/O2.png" /></p>
+<p>This view provides the most detailed breakdown, showing the coverage for individual functions. This helps pinpoint specific functions with low coverage, such as <code>log_to_csv</code> and <code>get_logger</code> within <code>modules/logger_manager.py</code>, and <code>train_model</code> in <code>modules/mlflow.py</code>. These functions should be prioritized for further testing.</p>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>While the overall coverage is 80%, there are areas that require improvement. Focusing testing efforts on the modules and functions identified with lower coverage will help increase the overall robustness and reliability of the codebase.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../unit_test/" class="btn btn-neutral float-left" title="Unit Testing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../bandit/" class="btn btn-neutral float-right" title="Security Analysis">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../unit_test/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../bandit/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Standard Deployment Guide - HDI Challenge Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Standard Deployment Guide";
+        var mkdocs_page_input_path = "deploy.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HDI Challenge Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../initialization/">Initialization Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../configuration/">Project Configuration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Line Interface</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Standard Deployment Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1"></a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#python-37">Python 3.7+</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#virtual-environment-recommended">Virtual Environment (Recommended)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#model-and-pipelines">Model and Pipelines</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#asgi-server">ASGI Server</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deployment-steps">Deployment Steps</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#standard-deployment-without-docker">Standard Deployment (Without Docker)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#docker-deployment-recommended-for-production">Docker Deployment (Recommended for Production)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#post-deployment-checks-applicable-to-both-deployment-methods">Post-Deployment Checks (Applicable to Both Deployment Methods)</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../stress_test/">Load Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unit_test/">Unit Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coverage/">Coverage Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bandit/">Security Analysis</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../licence/">License Agreement</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HDI Challenge Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Standard Deployment Guide</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="standard-deployment-guide">Standard Deployment Guide</h1>
+<p>This guide provides comprehensive instructions for deploying the HDI Claims Prediction API. The API is built using FastAPI and utilizes a pre-trained Scikit-learn model. This document covers both standard deployment without Docker as well as deployment using a Docker image.</p>
+<hr />
+<h2 id="_1"><img alt="Deploy" src="../images/d11.png" /></h2>
+<h2 id="prerequisites">Prerequisites</h2>
+<h3 id="python-37">Python 3.7+</h3>
+<p>Ensure you have Python 3.7 or a later version installed on your system.</p>
+<h3 id="virtual-environment-recommended">Virtual Environment (Recommended)</h3>
+<p>Create and activate a virtual environment to isolate your project dependencies:</p>
+<pre><code class="language-bash">python3 -m venv .venv
+source .venv/bin/activate  # Activate (Linux/macOS)
+.venv\Scripts\activate     # Activate (Windows)
+</code></pre>
+<h3 id="dependencies">Dependencies</h3>
+<p>Install the required project dependencies using the following command:</p>
+<pre><code class="language-bash">pip install -r requirements/requirements.txt
+</code></pre>
+<h3 id="configuration">Configuration</h3>
+<p>Configure the application via the <code>config/config.yaml</code> file, which contains essential settings such as API configurations, model paths, and logging options. Set the <code>CONFIG_PATH</code> environment variable to the directory containing <code>config.yaml</code>:</p>
+<pre><code class="language-bash"># For Linux/macOS, consider adding this to your `.bashrc` or `.zshrc` for persistence
+export CONFIG_PATH=config
+
+# For Windows, use `setx` for a persistent environment variable (requires admin privileges)
+set CONFIG_PATH=config
+setx CONFIG_PATH config /M  # You may need to restart your terminal for changes to take effect
+</code></pre>
+<h3 id="model-and-pipelines">Model and Pipelines</h3>
+<p>Ensure the following files and directories are set up in your project directory:
+- <strong>Trained Model:</strong> <code>models/linear_regression.pkl</code>
+- <strong>Preprocessing Pipelines:</strong> <code>pipes/*.pkl</code>
+- <strong>Imputation Dictionary:</strong> <code>artifacts/imputations.json</code></p>
+<h3 id="asgi-server">ASGI Server</h3>
+<p>Use Uvicorn for development and testing or Gunicorn for production to serve the FastAPI application.</p>
+<hr />
+<h2 id="deployment-steps">Deployment Steps</h2>
+<h3 id="standard-deployment-without-docker">Standard Deployment (Without Docker)</h3>
+<ol>
+<li>
+<p><strong>Clone the Repository</strong>
+   Clone the API repository to your deployment environment:
+   <code>bash
+   git clone &lt;repository-url&gt;
+   cd &lt;repository-directory&gt;</code></p>
+</li>
+<li>
+<p><strong>Set up the Environment</strong>
+   Create and activate a virtual environment, then install dependencies:
+   <code>bash
+   python3 -m venv .venv
+   source .venv/bin/activate  # for Linux/macOS
+   .venv\Scripts\activate     # for Windows
+   pip install -r requirements/requirements.txt</code></p>
+</li>
+<li>
+<p><strong>Configuration</strong>
+   Set the <code>CONFIG_PATH</code> environment variable to point to the directory containing <code>config.yaml</code>:
+   <code>bash
+   export CONFIG_PATH=config  # Linux/macOS
+   set CONFIG_PATH=config     # Windows</code></p>
+</li>
+<li>
+<p><strong>Start the API Server</strong></p>
+</li>
+<li><strong>For Development/Testing (with Uvicorn and auto-reload):</strong>
+     <code>bash
+     uvicorn api.main:app --host 127.0.0.1 --port 8000 --reload</code></li>
+<li>
+<p><strong>For Production (with Gunicorn and multiple workers):</strong>
+     <code>bash
+     gunicorn -w 4 -k uvicorn.workers.UvicornWorker api.main:app -b 0.0.0.0:8000</code>
+     Use a process manager like Supervisor or systemd to manage Gunicorn for automatic restarts.</p>
+</li>
+<li>
+<p><strong>Verify Deployment</strong>
+   Access the API root endpoint (e.g., <code>http://127.0.0.1:8000/</code> or your server IP) to ensure the API is running correctly.</p>
+</li>
+</ol>
+<hr />
+<h3 id="docker-deployment-recommended-for-production">Docker Deployment (Recommended for Production)</h3>
+<ol>
+<li><strong>Create a <code>Dockerfile</code></strong>
+   Here is an example <code>Dockerfile</code> to build a Docker image for the API:
+    ```dockerfile
+   FROM python:3.11-slim</li>
+</ol>
+<p>WORKDIR /app</p>
+<p>COPY . .</p>
+<p># Upgrade and install dependencies
+   RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends \
+       build-essential \
+       libpq-dev \
+       gcc \
+       &amp;&amp; apt-get clean &amp;&amp; rm -rf /var/lib/apt/lists/*</p>
+<p>RUN pip install --no-cache-dir -r requirements/requirements.txt</p>
+<p>ENV HOST="0.0.0.0" \
+       PORT="8000" \
+       CONFIG_PATH="../config"</p>
+<p>EXPOSE ${PORT}</p>
+<p># Run the app
+   CMD ["uvicorn", "api.main:app", "--host", "${HOST}", "--port", "${PORT}"]
+   ```</p>
+<ol>
+<li>
+<p><strong>Build the Docker Image</strong>
+   Build the Docker image using the following command:
+    <code>bash
+    docker build -t hdi-claims-api .</code></p>
+</li>
+<li>
+<p><strong>Run the Docker Container</strong>
+   Run the Docker container with the following command:
+    <code>bash
+    docker run -d -p 8000:8000 hdi-claims-api</code></p>
+</li>
+<li>
+<p><strong>Verify Deployment</strong>
+   Access the API root endpoint (e.g., <code>http://localhost:8000</code> or your server IP) to ensure the API is running correctly within the Docker container.</p>
+</li>
+</ol>
+<hr />
+<h2 id="post-deployment-checks-applicable-to-both-deployment-methods">Post-Deployment Checks (Applicable to Both Deployment Methods)</h2>
+<ul>
+<li><strong>API Endpoints:</strong> Thoroughly test all API endpoints to ensure they function as expected.</li>
+<li><strong>Monitoring:</strong> Set up monitoring to track the API's performance and availability.</li>
+<li><strong>Security:</strong> Implement security measures such as HTTPS, firewalls, and proper authentication &amp; authorization mechanisms.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../commands/" class="btn btn-neutral float-left" title="Command Line Interface"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../stress_test/" class="btn btn-neutral float-right" title="Load Testing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../commands/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../stress_test/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

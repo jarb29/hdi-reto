@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Command Line Interface - HDI Challenge Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Command Line Interface";
+        var mkdocs_page_input_path = "commands.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HDI Challenge Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../initialization/">Initialization Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../configuration/">Project Configuration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Reference</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Command Line Interface</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#commands-overview">Commands Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detailed-command-descriptions">Detailed Command Descriptions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#activate-virtual-environment">Activate Virtual Environment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-dependencies">Install Dependencies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-development-dependencies">Install Development Dependencies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-pre-commit-hooks">Install Pre-commit Hooks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run-pre-commit-hooks">Run Pre-commit Hooks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#linting-with-ruff">Linting with Ruff</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation-server">Documentation Server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#development-server">Development Server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#production-server">Production Server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#unit-tests">Unit Tests</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stress-tests">Stress Tests</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#security-tests">Security Tests</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-docker-image">Build Docker Image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deploy-application">Deploy Application</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stop-deployment">Stop Deployment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#additional-notes">Additional Notes:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#corresponding-makefile">Corresponding Makefile</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../deploy/">Standard Deployment Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../stress_test/">Load Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unit_test/">Unit Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coverage/">Coverage Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bandit/">Security Analysis</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../licence/">License Agreement</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HDI Challenge Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Command Line Interface</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="project-commands">Project Commands</h1>
+<p>This project uses a <code>Makefile</code> to simplify common development tasks. Commands are executed using <code>make &lt;command_name&gt;</code>. Activation commands for the virtual environment are OS-specific.</p>
+<h2 id="commands-overview">Commands Overview</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+<th>Linux/macOS</th>
+<th>Windows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>make activate</code></strong></td>
+<td>Activates the virtual environment.</td>
+<td><code>source .venv/bin/activate</code></td>
+<td><code>.venv\Scripts\activate</code></td>
+</tr>
+<tr>
+<td><strong><code>make install</code></strong></td>
+<td>Installs project dependencies as listed in <code>requirements.txt</code>.</td>
+<td><code>pip install -r requirements/requirements.txt</code></td>
+<td><code>pip install -r requirements/requirements.txt</code></td>
+</tr>
+<tr>
+<td><strong><code>make install-dev</code></strong></td>
+<td>Installs development dependencies as listed in <code>requirements_dev.txt</code>.</td>
+<td><code>pip install -r requirements/requirements_dev.txt</code></td>
+<td><code>pip install -r requirements/requirements_dev.txt</code></td>
+</tr>
+<tr>
+<td><strong><code>make install-pre-commit</code></strong></td>
+<td>Installs pre-commit hooks.</td>
+<td><code>pre-commit install</code></td>
+<td><code>pre-commit install</code></td>
+</tr>
+<tr>
+<td><strong><code>make pre-commit</code></strong></td>
+<td>Runs pre-commit hooks on all files.</td>
+<td><code>pre-commit run --all-files</code></td>
+<td><code>pre-commit run --all-files</code></td>
+</tr>
+<tr>
+<td><strong><code>make lint</code></strong></td>
+<td>Runs Ruff linter to check the code quality.</td>
+<td><code>ruff .</code></td>
+<td><code>ruff .</code></td>
+</tr>
+<tr>
+<td><strong><code>make docs</code></strong></td>
+<td>Starts the MkDocs development server to preview documentation locally.</td>
+<td><code>mkdocs serve</code></td>
+<td><code>mkdocs serve</code></td>
+</tr>
+<tr>
+<td><strong><code>make run-dev</code></strong></td>
+<td>Runs the development server with automatic reloading.</td>
+<td><code>uvicorn api.main:app --reload</code></td>
+<td><code>uvicorn api.main:app --reload</code></td>
+</tr>
+<tr>
+<td><strong><code>make run</code></strong></td>
+<td>Runs the production server.</td>
+<td><code>uvicorn api.main:app</code></td>
+<td><code>uvicorn api.main:app</code></td>
+</tr>
+<tr>
+<td><strong><code>make unit-tests</code></strong></td>
+<td>Runs unit tests using pytest.</td>
+<td><code>pytest -v</code></td>
+<td><code>pytest -v</code></td>
+</tr>
+<tr>
+<td><strong><code>make stress-tests</code></strong></td>
+<td>Runs stress tests using Locust.</td>
+<td><code>locust -f tests/stress/locustfile.py --host=http://127.0.0.1:8000</code></td>
+<td><code>locust -f tests/stress/locustfile.py --host=http://127.0.0.1:8000</code></td>
+</tr>
+<tr>
+<td><strong><code>make security-tests</code></strong></td>
+<td>Runs security tests using Bandit.</td>
+<td><code>bandit -c pyproject.toml -r .</code></td>
+<td><code>bandit -c pyproject.toml -r .</code></td>
+</tr>
+<tr>
+<td><strong><code>make build</code></strong></td>
+<td>Builds the Docker image.</td>
+<td><code>docker-compose up --build</code></td>
+<td><code>docker-compose up --build</code></td>
+</tr>
+<tr>
+<td><strong><code>make deploy</code></strong></td>
+<td>Deploys the application using Docker Compose.</td>
+<td><code>docker-compose up -d</code></td>
+<td><code>docker-compose up -d</code></td>
+</tr>
+<tr>
+<td><strong><code>make deploy-stop</code></strong></td>
+<td>Stops and removes the deployed application using Docker Compose.</td>
+<td><code>docker-compose down</code></td>
+<td><code>docker-compose down</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="detailed-command-descriptions">Detailed Command Descriptions</h2>
+<h3 id="activate-virtual-environment">Activate Virtual Environment</h3>
+<p><strong>Command:</strong> <code>make activate</code><br>
+<strong>Description:</strong> Activates the virtual environment.
+- <strong>Linux/macOS:</strong> <code>source .venv/bin/activate</code>
+- <strong>Windows:</strong> <code>.venv\Scripts\activate</code></p>
+<h3 id="install-dependencies">Install Dependencies</h3>
+<p><strong>Command:</strong> <code>make install</code><br>
+<strong>Description:</strong> Installs the project dependencies.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>pip install -r requirements/requirements.txt</code></p>
+<h3 id="install-development-dependencies">Install Development Dependencies</h3>
+<p><strong>Command:</strong> <code>make install-dev</code><br>
+<strong>Description:</strong> Installs additional development dependencies.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>pip install -r requirements/requirements_dev.txt</code></p>
+<h3 id="install-pre-commit-hooks">Install Pre-commit Hooks</h3>
+<p><strong>Command:</strong> <code>make install-pre-commit</code><br>
+<strong>Description:</strong> Installs pre-commit hooks.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>pre-commit install</code></p>
+<h3 id="run-pre-commit-hooks">Run Pre-commit Hooks</h3>
+<p><strong>Command:</strong> <code>make pre-commit</code><br>
+<strong>Description:</strong> Runs pre-commit hooks on all files.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>pre-commit run --all-files</code></p>
+<h3 id="linting-with-ruff">Linting with Ruff</h3>
+<p><strong>Command:</strong> <code>make lint</code><br>
+<strong>Description:</strong> Runs the Ruff linter to check code quality.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>ruff .</code></p>
+<h3 id="documentation-server">Documentation Server</h3>
+<p><strong>Command:</strong> <code>make docs</code><br>
+<strong>Description:</strong> Starts the MkDocs development server for local preview of documentation.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>mkdocs serve</code></p>
+<h3 id="development-server">Development Server</h3>
+<p><strong>Command:</strong> <code>make run-dev</code><br>
+<strong>Description:</strong> Runs the development server with automatic reloading enabled.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>uvicorn api.main:app --reload</code></p>
+<h3 id="production-server">Production Server</h3>
+<p><strong>Command:</strong> <code>make run</code><br>
+<strong>Description:</strong> Runs the production server.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>uvicorn api.main:app</code></p>
+<h3 id="unit-tests">Unit Tests</h3>
+<p><strong>Command:</strong> <code>make unit-tests</code><br>
+<strong>Description:</strong> Runs unit tests using pytest.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>pytest -v</code></p>
+<h3 id="stress-tests">Stress Tests</h3>
+<p><strong>Command:</strong> <code>make stress-tests</code><br>
+<strong>Description:</strong> Runs stress tests using Locust.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>locust -f tests/stress/locustfile.py --host=http://127.0.0.1:8000</code></p>
+<h3 id="security-tests">Security Tests</h3>
+<p><strong>Command:</strong> <code>make security-tests</code><br>
+<strong>Description:</strong> Runs security tests using Bandit.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>bandit -c pyproject.toml -r .</code></p>
+<h3 id="build-docker-image">Build Docker Image</h3>
+<p><strong>Command:</strong> <code>make build</code><br>
+<strong>Description:</strong> Builds the Docker image.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>docker-compose up --build</code></p>
+<h3 id="deploy-application">Deploy Application</h3>
+<p><strong>Command:</strong> <code>make deploy</code><br>
+<strong>Description:</strong> Deploys the application using Docker Compose.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>docker-compose up -d</code></p>
+<h3 id="stop-deployment">Stop Deployment</h3>
+<p><strong>Command:</strong> <code>make deploy-stop</code><br>
+<strong>Description:</strong> Stops and removes the deployed application using Docker Compose.
+- <strong>Linux/macOS &amp; Windows:</strong> <code>docker-compose down</code></p>
+<hr />
+<h3 id="additional-notes">Additional Notes:</h3>
+<ul>
+<li>Ensure the virtual environment is activated before running other commands.</li>
+<li>The <code>make</code> commands simplify and streamline repetitive tasks, aiding in efficient project management.</li>
+</ul>
+<hr />
+<h2 id="corresponding-makefile">Corresponding Makefile</h2>
+<pre><code class="language-makefile">SHELL := /bin/bash
+
+# Determine the OS and set the activation command accordingly
+ifeq ($(OS),Windows_NT)
+    ACTIVATE = .venv\Scripts\activate
+else
+    ACTIVATE = source .venv/bin/activate
+endif
+
+.PHONY: activate install lint install-dev install-pre-commit pre-commit docs run-dev run unit-tests stress-tests security-tests build deploy deploy-stop
+
+activate: ## Activate the virtual environment
+    $(ACTIVATE)
+
+install: activate    ## Install the dependencies
+    uv pip install -r requirements/requirements.txt
+
+install-dev: activate    ## Install the dev dependencies
+    uv pip install -r requirements/requirements_dev.txt
+
+install-pre-commit: install-dev ## Install pre-commit hooks
+    pre-commit install
+
+pre-commit: install-pre-commit ## Run pre-commit hooks
+    pre-commit run --all-files
+
+lint: ## Run Ruff to lint the code
+    ruff .
+
+docs: ## Serve documentation locally
+    mkdocs serve
+
+run-dev: activate ## Run the development server
+    uvicorn api.main:app --reload
+
+run: ## Run the production server
+    uvicorn api.main:app
+
+unit-tests: install-dev ## Run the unit tests
+    pytest -v
+
+stress-tests: install-dev ## Run the stress tests
+    locust -f tests/stress/locustfile.py --host=http://127.0.0.1:8000
+
+security-tests: install-dev ## Run the security tests
+    bandit -c pyproject.toml -r .
+
+build: ## Build the Docker image
+    docker-compose up --build
+
+deploy: build ## Deploy the app to the server
+    docker-compose up -d
+
+deploy-stop: ## Stop the app from the server
+    docker-compose down
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../api/" class="btn btn-neutral float-left" title="API Reference"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../deploy/" class="btn btn-neutral float-right" title="Standard Deployment Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../api/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../deploy/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

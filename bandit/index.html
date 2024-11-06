@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Security Analysis - HDI Challenge Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Security Analysis";
+        var mkdocs_page_input_path = "bandit.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HDI Challenge Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../initialization/">Initialization Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../configuration/">Project Configuration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Line Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../deploy/">Standard Deployment Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../stress_test/">Load Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unit_test/">Unit Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coverage/">Coverage Test</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Security Analysis</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#running-bandit-with-configuration-in-pyprojecttoml">Running Bandit with Configuration in pyproject.toml</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-by-step-guide">Step-by-Step Guide</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#breakdown-of-the-command">Breakdown of the Command</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-output">Example Output</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../licence/">License Agreement</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HDI Challenge Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Security Analysis</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="security-analysis-with-bandit">Security Analysis with Bandit</h1>
+<p>Bandit is a tool designed to find common security issues in Python code. Using Bandit, you can systematically scan your codebase for vulnerabilities and ensure that your code meets security best practices.</p>
+<h2 id="running-bandit-with-configuration-in-pyprojecttoml">Running Bandit with Configuration in <code>pyproject.toml</code></h2>
+<p>The recommended way to run Bandit is by defining your configurations in a <code>pyproject.toml</code> file. Here's how to do it:</p>
+<h3 id="step-by-step-guide">Step-by-Step Guide</h3>
+<ol>
+<li>
+<p><strong>Install Bandit</strong>:
+   Ensure you have Bandit installed in your development environment:
+   <code>bash
+   pip install bandit</code></p>
+</li>
+<li>
+<p><strong>Create or Update <code>pyproject.toml</code></strong>:
+   Ensure you have a <code>pyproject.toml</code> file in your project root. If it doesn't exist, create it and add the Bandit configuration:</p>
+</li>
+</ol>
+<p><code>toml
+   [tool.bandit]
+   targets = ["."]
+   # Add any specific configurations for Bandit here</code></p>
+<p>Here is an example configuration for <code>pyproject.toml</code> that includes some common Bandit settings:</p>
+<p><code>toml
+   [tool.bandit]
+   targets = ["."]
+   exclude = ["tests/*", "docs/*"]
+   tests = ["B101", "B102", "B103"]  # Specify specific tests to run</code></p>
+<p>Here's what the example test IDs mean:
+    - <strong>B101: assert_used</strong>
+        - <strong>Description</strong>: Detects the use of <code>assert</code> statements. While useful for development, they should not be used in production code as they can be stripped away when running Python in optimization mode.
+        - <strong>More Info</strong>: <a href="https://bandit.readthedocs.io/en/latest/blacklists/blacklist_asserts.html">Bandit B101</a>
+    - <strong>B102: exec_used</strong>
+        - <strong>Description</strong>: Detects the use of <code>exec</code>. This function allows dynamic execution of Python code, which is risky and can lead to code injection vulnerabilities.
+        - <strong>More Info</strong>: <a href="https://bandit.readthedocs.io/en/latest/plugins/b102_exec_used.html">Bandit B102</a>
+    - <strong>B103: set_bad_file_permissions</strong>
+        - <strong>Description</strong>: Detects insecure use of <code>chmod</code> that might set file permissions allowing unauthorized access or modifications.
+        - <strong>More Info</strong>: <a href="https://bandit.readthedocs.io/en/latest/plugins/b103_set_bad_file_permissions.html">Bandit B103</a></p>
+<ol>
+<li><strong>Run Bandit with the Configuration</strong>:
+   Execute Bandit, pointing it to your configuration file and targeting the current directory (recursively scanning all Python files):
+   <code>bash
+   bandit -c pyproject.toml -r .</code></li>
+</ol>
+<h3 id="breakdown-of-the-command">Breakdown of the Command</h3>
+<ul>
+<li><strong><code>bandit</code></strong>: The Bandit tool for security analysis.</li>
+<li><strong><code>-c pyproject.toml</code></strong>: Specifies the path to the configuration file (<code>pyproject.toml</code>). This flag tells Bandit to use the configurations defined in this file.</li>
+<li><strong><code>-r .</code></strong>: Recursively scan the current directory (<code>.</code>). Bandit will analyze all Python files in the specified directory and its subdirectories.</li>
+</ul>
+<h3 id="example-output">Example Output</h3>
+<p>Running the command might produce output similar to the following:</p>
+<pre><code class="language-plaintext">[main]  INFO    profile include tests: None
+[main]  INFO    profile exclude tests: None
+[main]  INFO    cli include tests: None
+[main]  INFO    cli exclude tests: None
+[tester]    INFO    running on Python 3.11.0
+[...]
+Run started:2023-10-10 xx:xx:xx
+
+Test results:
+&gt;&gt; Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: path/to/code.py:15
+   More Info: https://bandit.readthedocs.io/en/latest/blacklists/blacklist_asserts.html
+15 
+16       assert user.is_authenticated, &quot;User is not authenticated&quot;
+17 
+
+--------------------------------------------------
+
+Code scanned:
+    Total lines of code: 236
+    Total lines skipped (#nosec): 0
+
+Run metrics:
+    Total issues (by severity):
+        Undefined: 0
+        Low: 1
+        Medium: 0
+        High: 0
+
+    Total issues (by confidence):
+        Undefined: 0
+        Low: 0
+        Medium: 0
+        High: 1
+
+Files skipped (0):
+</code></pre>
+<h3 id="summary">Summary</h3>
+<p>Bandit is a valuable tool for maintaining the security of your Python codebase. By leveraging the <code>pyproject.toml</code> configuration file, you can customize its behavior to fit your project's needs. Running <code>bandit -c pyproject.toml -r .</code> will help identify potential security vulnerabilities in your code so that they can be addressed before they become problematic.</p>
+<p>For more information, visit the <a href="https://bandit.readthedocs.io/en/latest/">Bandit documentation</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../coverage/" class="btn btn-neutral float-left" title="Coverage Test"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../licence/" class="btn btn-neutral float-right" title="License Agreement">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../coverage/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../licence/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

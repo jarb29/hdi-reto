@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API Reference - HDI Challenge Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API Reference";
+        var mkdocs_page_input_path = "api.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HDI Challenge Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../initialization/">Initialization Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../configuration/">Project Configuration</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">API Reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1"></a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-host-configuration">API Host Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#root-endpoint">Root Endpoint</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#predict-claim">Predict Claim</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#train-model">Train Model</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#error-handling">Error Handling</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-preprocessing">Data Preprocessing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#model">Model</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Line Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../deploy/">Standard Deployment Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../stress_test/">Load Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unit_test/">Unit Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coverage/">Coverage Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bandit/">Security Analysis</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../licence/">License Agreement</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HDI Challenge Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="hdi-claims-prediction-api-documentation">HDI Claims Prediction API Documentation</h1>
+<p>Inspired by the style and structure of Swagger API documentation, this document aims to provide a clear and organized reference. For an interactive API documentation, please visit after running the service http://127.0.0.1:8000/redoc` </p>
+<hr />
+<h2 id="_1"><img alt="Confiurations" src="../images/d10.png" /></h2>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#api-host-configuration">API Host Configuration</a></li>
+<li><a href="#root-endpoint">Root Endpoint</a></li>
+<li><a href="#predict-claim">Predict Claim</a></li>
+<li><a href="#train-model">Train Model</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#data-preprocessing">Data Preprocessing</a></li>
+<li><a href="#model">Model</a></li>
+</ul>
+<hr />
+<h2 id="api-host-configuration">API Host Configuration</h2>
+<p>The API is hosted on the following address:</p>
+<ul>
+<li><strong>Host:</strong> <code>127.0.0.1</code></li>
+<li><strong>Port:</strong> <code>8000</code></li>
+</ul>
+<p>When making requests to the API, ensure that you use this base URL: <code>http://127.0.0.1:8000</code></p>
+<hr />
+<h2 id="root-endpoint">Root Endpoint</h2>
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>(Check if the API is up and running)</code></summary>
+
+### Description
+
+This endpoint is used to check if the API server is running. If the server is up, it returns a welcome message.
+
+### Parameters
+
+None
+
+### Responses
+
+> | HTTP Code | Content-Type       | Response                                      |
+> |-----------|--------------------|-----------------------------------------------|
+> | `200`     | `application/json` | `{"message": "Bienvenido al API de predicción de siniestros de HDI"}` |
+
+### Example cURL
+
+
+<pre><code class="language-bash">curl -X GET http://127.0.0.1:8000/
+</code></pre>
+
+
+</details>
+
+<hr />
+<h2 id="predict-claim">Predict Claim</h2>
+<details>
+ <summary><code>POST</code> <code><b>/api/v1/predict/</b></code> <code>(Predicts the repair time for a given claim)</code></summary>
+
+### Description
+
+This endpoint predicts the repair time for a given claim based on various parameters.
+
+### Parameters
+
+> | Name           | Type   | Data Type | Description       |
+> |----------------|--------|-----------|-------------------|
+> | (Request Body) |        | JSON      | See example below  |
+
+### Request Body Example
+
+
+<pre><code class="language-json">{
+  &quot;claim_id&quot;: 123,
+  &quot;marca_vehiculo&quot;: &quot;Toyota&quot;,
+  &quot;antiguedad_vehiculo&quot;: 5,
+  &quot;tipo_poliza&quot;: 2,
+  &quot;taller&quot;: 10,
+  &quot;partes_a_reparar&quot;: 2,
+  &quot;partes_a_reemplazar&quot;: 1
+}
+</code></pre>
+
+
+### Responses
+
+> | HTTP Code | Content-Type      | Response                                                                    |
+> |-----------|-------------------|-----------------------------------------------------------------------------|
+> | `200`     | `application/json`| ```json { "prediccion": 2.5 } ```                                            |
+> | `400`     | `application/json`| `{"code":"400","message":"Bad Request"}`                                     |
+> | `500`     | `application/json`| `{"code":"500","message":"Internal Server Error (See logs for details)"}`    |
+
+### Example cURL
+
+
+<pre><code class="language-bash">curl -X POST -H &quot;Content-Type: application/json&quot; -d '{
+  &quot;claim_id&quot;: 123,
+  &quot;marca_vehiculo&quot;: &quot;Toyota&quot;,
+  &quot;antiguedad_vehiculo&quot;: 5,
+  &quot;tipo_poliza&quot;: 2,
+  &quot;taller&quot;: 10,
+  &quot;partes_a_reparar&quot;: 2,
+  &quot;partes_a_reemplazar&quot;: 1
+}' http://127.0.0.1:8000/api/v1/predict/
+</code></pre>
+
+
+### Special Condition
+
+If `tipo_poliza` is 4, the prediction will always be -1.
+
+</details>
+
+<hr />
+<h2 id="train-model">Train Model</h2>
+<details>
+ <summary><code>POST</code> <code><b>/api/v1/train/</b></code> <code>(Endpoint for training the model)</code></summary>
+
+### Description
+
+This endpoint allows for training the model using a provided dataset file.
+
+### Parameters
+
+> | Name | Type        | Data Type           | Description                      |
+> |------|-------------|---------------------|----------------------------------|
+> | file | binary file | `multipart/form-data` | The file to be used for training. |
+
+### Responses
+
+> | HTTP Code | Content-Type       | Response                                    |
+> |-----------|--------------------|---------------------------------------------|
+> | `200`     | `text/plain`       | "Training successful"                       |
+> | `422`     | `application/json` | `{"code":"422", "message":"Validation Error"}` |
+
+### Example cURL
+
+
+<pre><code class="language-bash">curl -X POST -F &quot;file=@/path/to/your/file.csv&quot; http://127.0.0.1:8000/api/v1/train/
+</code></pre>
+
+
+</details>
+
+<hr />
+<h2 id="error-handling">Error Handling</h2>
+<p>See individual endpoint responses for specific error codes. Common codes include:</p>
+<ul>
+<li><strong><code>400 Bad Request</code>:</strong> The request was invalid or cannot be otherwise served.</li>
+<li><strong><code>500 Internal Server Error</code>:</strong> An error occurred on the server side.</li>
+</ul>
+<hr />
+<h2 id="data-preprocessing">Data Preprocessing</h2>
+<p>A summary of the five-step preprocessing pipeline applied before prediction, including null imputation. See the code for details.</p>
+<hr />
+<h2 id="model">Model</h2>
+<p>A linear regression model (<code>linear_regression.pkl</code>) is used to predict repair time based on preprocessed features.</p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../configuration/" class="btn btn-neutral float-left" title="Project Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../commands/" class="btn btn-neutral float-right" title="Command Line Interface">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../configuration/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../commands/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

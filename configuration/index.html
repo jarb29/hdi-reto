@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Project Configuration - HDI Challenge Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Project Configuration";
+        var mkdocs_page_input_path = "configuration.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HDI Challenge Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../initialization/">Initialization Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Project Configuration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1"></a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configurations">Configurations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#logger-configuration">Logger Configuration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-moduleslogger_manageryaml">Example modules/logger_manager.yaml</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#model-configuration">Model Configuration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration_1">Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-modulesmlflowpy">Example modules/mlflow.py</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline-configuration">Pipeline Configuration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration-configconfigyaml">Configuration config/config.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-usage-modulespreprocessingpy">Example Usage modules/preprocessing.py</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api-host-configuration-configconfigyaml">API Host Configuration config/config.yaml</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configuration_2">Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#directory-structure">Directory Structure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requirements-requirementsrequirementstxt">requirements requirements/requirements.txt</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#principal-file-requirementstxt">Principal File: requirements.txt</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#test-testtest_functionspy">test test/test_functions.py</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#principal-code">Principal Code</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#routes-routespredictpy">routes routes/predict.py</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#principal-code-routespredictpy">Principal Code: routes/predict.py</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#principal-code-routestrainpy">Principal Code: routes/train.py</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipes-pipespkl">pipes pipes/*.pkl</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#models-modelslinear_regressionpkl">models models/linear_regression.pkl</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#docs-docsmd">docs docs/*.md</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-data">data data/*</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#config-configconfigyaml">config config/config.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#artifacts-artifactsimputationsjson">artifacts artifacts/imputations.json</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modules">modules</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#detailed-descriptions-of-principal-codes">Detailed Descriptions of Principal Codes:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#app">app</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#principal-code-mainpy">Principal Code: main.py</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#key-components">Key Components</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deployment-instructions">Deployment Instructions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#common-issues-and-troubleshooting">Common Issues and Troubleshooting</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-model-not-loading">Issue: Model Not Loading</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-api-not-starting">Issue: API Not Starting</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#glossary">Glossary</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Line Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../deploy/">Standard Deployment Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../stress_test/">Load Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unit_test/">Unit Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coverage/">Coverage Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bandit/">Security Analysis</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../licence/">License Agreement</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HDI Challenge Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Project Configuration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="configuration-documentation">Configuration - Documentation</h1>
+<p>This document provides detailed information about the configuration settings and directory structure used in the HDI Claims Prediction API.</p>
+<hr />
+<h2 id="_1"><img alt="Directory" src="../images/d6.png" /></h2>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#configurations">Configurations</a></li>
+<li><a href="#logger-configuration">Logger Configuration</a></li>
+<li><a href="#model-configuration">Model Configuration</a></li>
+<li><a href="#pipeline-configuration">Pipeline Configuration</a></li>
+<li><a href="#api-host-configuration">API Host Configuration</a></li>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#requirements-requirementsrequirementstxt">requirements</a></li>
+<li><a href="#test-testtest_functionspy">test</a></li>
+<li><a href="#routes-routespredictpy">routes</a></li>
+<li><a href="#pipes-pipes">pipes</a></li>
+<li><a href="#models-modelslinear_regressionpkl">models</a></li>
+<li><a href="#docs-docsmd">docs</a></li>
+<li><a href="#data-data">data</a></li>
+<li><a href="#config-configconfigyaml">config</a></li>
+<li><a href="#artifacts-artifactsimputationsjson">artifacts</a></li>
+<li><a href="#modules">modules</a></li>
+<li><a href="#app">app</a></li>
+<li><a href="#deployment-instructions">Deployment Instructions</a></li>
+<li><a href="#common-issues-and-troubleshooting">Common Issues and Troubleshooting</a></li>
+<li><a href="#glossary">Glossary</a></li>
+</ul>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>Welcome to the configuration documentation for the HDI Claims Prediction API. This guide aims to provide you with all the necessary information to configure and understand the layout of the project.</p>
+<hr />
+<h2 id="configurations">Configurations</h2>
+<p><img alt="Configurations" src="../images/d1.png" /></p>
+<h3 id="logger-configuration">Logger Configuration</h3>
+<p>The logging configuration specifies where and how logs should be stored and rotated. You can find the configuration in the <code>config/config.yaml</code> file.</p>
+<h4 id="configuration">Configuration</h4>
+<pre><code class="language-yaml">logger:
+  log_file: &quot;logs/logger.log&quot;
+  csv_file: &quot;logs/logger.csv&quot;
+  level: &quot;INFO&quot;
+  max_bytes: 10485760
+  backup_count: 5
+</code></pre>
+<ul>
+<li><strong>Log File:</strong> Path where the log file will be stored.</li>
+<li><strong>CSV File:</strong> Path where the CSV log file will be stored.</li>
+<li><strong>Log Level:</strong> Logging level to control the verbosity.</li>
+<li><strong>Max Bytes:</strong> Maximum size (in bytes) for each log file before it gets rotated.</li>
+<li><strong>Backup Count:</strong> Number of backup log files to keep.</li>
+</ul>
+<h4 id="example-moduleslogger_manageryaml">Example <code>modules/logger_manager.yaml</code></h4>
+<pre><code class="language-python">import logging
+import logging.handlers
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+handler = logging.handlers.RotatingFileHandler(
+    'logs/logger.log', maxBytes=10485760, backupCount=5
+)
+logger.addHandler(handler)
+</code></pre>
+<hr />
+<h3 id="model-configuration">Model Configuration</h3>
+<p>The model path specifies where the trained model is stored. <code>config/config.yaml</code></p>
+<h4 id="configuration_1">Configuration</h4>
+<pre><code class="language-yaml">models:
+  model_path: &quot;models/linear_regression.pkl&quot;
+</code></pre>
+<ul>
+<li><strong>Model Path:</strong> Path where the machine learning model file is stored.</li>
+</ul>
+<h4 id="example-modulesmlflowpy">Example <code>modules/mlflow.py</code></h4>
+<p>Load the model in Python:</p>
+<pre><code class="language-python">import joblib
+
+def load_model(cfg):
+    &quot;&quot;&quot;Carga el modelo preentrenado basado en la configuración de Hydra.
+
+    Args:
+        cfg (DictConfig): Configuración cargada por Hydra.
+
+    Returns:
+        joblib(pkl): Modelo cargado.
+    &quot;&quot;&quot;
+    logger = get_logger()
+
+    model_path = cfg.models.model_path
+    abs_model_path = os.path.join(root_dir, model_path)
+
+    logger.info(f&quot;Cargando el modelo desde: {model_path}&quot;)
+
+    return joblib.load(abs_model_path)
+
+</code></pre>
+<hr />
+<h3 id="pipeline-configuration">Pipeline Configuration</h3>
+<p>The pipeline configuration outlines the steps involved in the preprocessing pipeline.</p>
+<h4 id="configuration-configconfigyaml">Configuration <code>config/config.yaml</code></h4>
+<pre><code class="language-yaml">pipeline:
+  imputation_path: &quot;artifacts/imputations.json&quot;
+  steps:
+    - name: &quot;Step 1&quot;
+      pipeline: &quot;pipes/pipeline_1.pkl&quot;
+    - name: &quot;Step 2&quot;
+      pipeline: &quot;pipes/pipeline_2.pkl&quot;
+    - name: &quot;Step 3&quot;
+      pipeline: &quot;pipes/pipeline_3.pkl&quot;
+    - name: &quot;Step 4&quot;
+      pipeline: &quot;pipes/pipeline_4.pkl&quot;
+    - name: &quot;Step 5&quot;
+      pipeline: &quot;pipes/pipeline_5.pkl&quot;
+</code></pre>
+<ul>
+<li><strong>Imputation Path:</strong> Path where the imputation details are stored.</li>
+<li><strong>Steps:</strong> Sequence of steps in the preprocessing pipeline.</li>
+</ul>
+<h4 id="example-usage-modulespreprocessingpy">Example Usage  <code>modules/preprocessing.py</code></h4>
+<p>Loading and using the pipeline:</p>
+<pre><code class="language-python"># pipeline steps
+for step in cfg.pipeline.steps:
+    logger.info(f&quot;Ejecutando {step.name} con pipeline: {step.pipeline}&quot;)
+    df = pipeline_run(df, step.pipeline)
+
+# Cargar el pipeline
+logger.info(f&quot;Cargando el pipeline: {abs_pipeline_file}&quot;)
+with open(abs_pipeline_file, 'rb') as file:
+    pipeline = dill.load(file)
+</code></pre>
+<hr />
+<h3 id="api-host-configuration-configconfigyaml">API Host Configuration  <code>config/config.yaml</code></h3>
+<p>The API server host and port settings.</p>
+<h4 id="configuration_2">Configuration</h4>
+<pre><code class="language-yaml">api:
+  host: &quot;127.0.0.1&quot;
+  port: 8000
+</code></pre>
+<ul>
+<li><strong>Host:</strong> IP address where the API server is hosted.</li>
+<li><strong>Port:</strong> Port number on which the API server listens.</li>
+</ul>
+<h4 id="example">Example</h4>
+<p>Running the API locally:</p>
+<pre><code class="language-bash">uvicorn main:app --host 127.0.0.1 --port 8000
+</code></pre>
+<hr />
+<h2 id="directory-structure">Directory Structure</h2>
+<p><img alt="Directory" src="../images/d3.png" /></p>
+<p>Explanation of various directories and important files within the project.</p>
+<h3 id="requirements-requirementsrequirementstxt">requirements <code>requirements/requirements.txt</code></h3>
+<p>Contains the requirements files listing the dependencies for the project.</p>
+<pre><code class="language-yaml">requirements/
+  ├── requirements-docs.txt    # Dependencies required for generating documentation
+  ├── requirements.txt         # Core dependencies for running the project
+  └── requirements_dev.txt     # Development dependencies for testing, linting, etc.
+</code></pre>
+<h4 id="principal-file-requirementstxt">Principal File: <code>requirements.txt</code></h4>
+<p>The <code>requirements.txt</code> file lists the core dependencies required to run the project. The dependencies include:</p>
+<pre><code class="language-plaintext">fastapi
+pydantic
+pandas
+numpy
+dill
+mlflow
+scikit-learn
+uvicorn
+hydra-core
+joblib
+python-dotenv
+omegaconf
+python-multipart
+pytest
+httpx
+locust
+coverage
+</code></pre>
+<p>To install these dependencies, run:</p>
+<pre><code class="language-sh">pip install -r requirements/requirements.txt
+</code></pre>
+<h3 id="test-testtest_functionspy">test <code>test/test_functions.py</code></h3>
+<p>Holds all the unit tests and integration tests for the project.</p>
+<pre><code class="language-yaml">test/
+  └── test_functions.py             # Test cases for unit and integration tests
+# 1 directories
+</code></pre>
+<h4 id="principal-code">Principal Code</h4>
+<p>The <code>test</code> folder contains test cases for unit testing and integration testing using <code>pytest</code> and <code>fastapi.testclient</code>.</p>
+<h5 id="test-file-test_pipelinepy">Test File: <code>test_pipeline.py</code></h5>
+<pre><code class="language-python">import pytest
+import pandas as pd
+from fastapi.testclient import TestClient
+from modules import full_pipeline, load_model, config_manager
+from api.main import app
+
+# Create a test client for the API
+client = TestClient(app)
+
+# Fixture to initialize and clear Hydra configuration in each test
+@pytest.fixture(scope=&quot;module&quot;)
+def hydra_cfg():
+    from hydra.core.global_hydra import GlobalHydra
+    if GlobalHydra.instance().is_initialized():
+        GlobalHydra.instance().clear()
+    config = config_manager.init_config()
+    return config  # Ensure to return the DictConfig object
+
+def test_full_pipeline(hydra_cfg):
+    # Example data for the pipeline
+    data = pd.DataFrame({
+        &quot;claim_id&quot;: [1],
+        &quot;marca_vehiculo&quot;: [&quot;ford&quot;],
+        &quot;antiguedad_vehiculo&quot;: [5],
+        &quot;tipo_poliza&quot;: [2],
+        &quot;taller&quot;: [1],
+        &quot;partes_a_reparar&quot;: [3],
+        &quot;partes_a_reemplazar&quot;: [1]
+    })
+
+    try:
+        result = full_pipeline(data, hydra_cfg)
+        assert not result.isnull().values.any(), &quot;The pipeline should impute all null values&quot;
+        assert &quot;log_total_piezas&quot; in result.columns, &quot;The 'log_total_piezas' column is missing in the pipeline result&quot;
+    except Exception as e:
+        pytest.fail(f&quot;Pipeline error: {str(e)}&quot;)
+
+def test_load_model(hydra_cfg):
+    # Test for loading the model
+    try:
+        model = load_model(hydra_cfg)
+        assert model is not None, &quot;The model was not loaded correctly&quot;
+    except Exception as e:
+        pytest.fail(f&quot;Model loading error: {str(e)}&quot;)
+
+def test_predict_endpoint():
+    # Input data for the predict endpoint
+    payload = {
+        &quot;claim_id&quot;: 1,
+        &quot;marca_vehiculo&quot;: &quot;ford&quot;,
+        &quot;antiguedad_vehiculo&quot;: 5,
+        &quot;tipo_poliza&quot;: 2,
+        &quot;taller&quot;: 1,
+        &quot;partes_a_reparar&quot;: 3,
+        &quot;partes_a_reemplazar&quot;: 1
+    }
+
+    response = client.post(&quot;/api/v1/predict/&quot;, json=payload)
+    assert response.status_code == 200, &quot;The endpoint response should be 200 OK&quot;
+    json_data = response.json()
+    assert &quot;prediccion&quot; in json_data, &quot;The response should contain the 'prediccion' field&quot;
+</code></pre>
+<h3 id="routes-routespredictpy">routes <code>routes/predict.py</code></h3>
+<p>Contains the route definitions for the API endpoints. Example: <code>train.py</code>, <code>predict.py</code>.</p>
+<pre><code class="language-yaml">routes/
+  ├── __init__.py              # Initialization file for Python package
+  ├── predict.py               # Route for prediction endpoint
+  └── train.py                 # Route for training endpoint
+# 1 directories, 3 files
+</code></pre>
+<h4 id="principal-code-routespredictpy">Principal Code: <code>routes/predict.py</code></h4>
+<p>The <code>predict.py</code> file inside the <code>routes</code> folder contains the endpoint logic for the <code>/api/v1/predict/</code> API. It converts the incoming claim data into a dataframe, processes it through the pipeline, and predicts the outcome using the machine learning model.</p>
+<h5 id="detailed-code-of-predictpy">Detailed Code of <code>predict.py</code></h5>
+<pre><code class="language-python">import pandas as pd
+import time
+from datetime import datetime
+from fastapi import APIRouter, HTTPException, Request
+from starlette.concurrency import run_in_threadpool
+
+from models import Claim
+from modules import full_pipeline, load_model, log_to_csv
+
+router = APIRouter()
+
+@router.post(&quot;/api/v1/predict/&quot;, include_in_schema=True)
+async def predict_claim(claim: Claim, request: Request):
+    cfg = request.app.state.cfg
+    logger = request.app.state.logger
+    start_time = time.time()
+
+    logger.info(&quot;Solicitud recibida en /api/v1/predict/&quot;)
+
+    # convert claim to dataframe
+    data = pd.DataFrame([claim.dict()])
+
+    # load model asynchronously
+    try:
+        logger.info(&quot;Cargando el modelo...&quot;)
+        modelo = await run_in_threadpool(load_model, cfg)
+    except Exception as e:
+        logger.error(f&quot;Error al cargar el modelo: {str(e)}&quot;)
+        raise HTTPException(status_code=500, detail=f&quot;Error al cargar el modelo: {str(e)}&quot;)
+
+    # full pipeline asynchronously
+    try:
+        logger.info(&quot;Ejecutando el pipeline de transformación...&quot;)
+        df_procesado = await run_in_threadpool(full_pipeline, data, cfg)
+    except Exception as e:
+        logger.error(f&quot;Error en el pipeline de transformación: {str(e)}&quot;)
+        raise HTTPException(status_code=500, detail=f&quot;Error en el pipeline de transformación: {str(e)}&quot;)
+
+    # predict asynchronously
+    try:
+        logger.info(&quot;Realizando la predicción...&quot;)
+        if claim.tipo_poliza == 4:
+            logger.info(&quot;Tipo de póliza es 4, devolviendo predicción: -1&quot;)
+            prediccion = [-1]
+        else:
+            logger.info(&quot;Tipo de póliza no es 4, realizando predicción...&quot;)
+            model_features = modelo.feature_names_in_
+            df_for_prediction = df_procesado[model_features]
+            prediccion = await run_in_threadpool(modelo.predict, df_for_prediction)
+            logger.info(f&quot;Predicción: {prediccion[0]}&quot;)
+    except Exception as e:
+        logger.error(f&quot;Error en la predicción: {str(e)}&quot;)
+        raise HTTPException(status_code=500, detail=f&quot;Error en la predicción: {str(e)}&quot;)
+
+    end_time = time.time()
+    execution_time = round(end_time - start_time, 4)
+
+    # log to CSV
+    log_data = {
+        &quot;timestamp&quot;: datetime.now().strftime(&quot;%Y-%m-%d %H:%M:%S&quot;),
+        &quot;claim_id&quot;: claim.claim_id,
+        &quot;marca_vehiculo&quot;: claim.marca_vehiculo,
+        &quot;antiguedad_vehiculo&quot;: claim.antiguedad_vehiculo,
+        &quot;tipo_poliza&quot;: claim.tipo_poliza,
+        &quot;taller&quot;: claim.taller,
+        &quot;partes_a_reparar&quot;: claim.partes_a_reparar,
+        &quot;partes_a_reemplazar&quot;: claim.partes_a_reemplazar,
+        &quot;prediction&quot;: prediccion[0],
+        &quot;execution_time&quot;: execution_time
+    }
+    log_to_csv(log_data, cfg)
+
+    logger.info(f&quot;Predicción realizada para claim_id {claim.claim_id} en {execution_time}s&quot;)
+
+    return {&quot;prediccion&quot;: prediccion[0]}
+</code></pre>
+<h4 id="principal-code-routestrainpy">Principal Code: <code>routes/train.py</code></h4>
+<p>Logic for the machine learning model.</p>
+<pre><code class="language-python">@router.post(&quot;/api/v1/train/&quot;)
+async def train(file: UploadFile = File(...)):
+    try:
+        # get logger from api state
+        logger = request.app.state.logger
+        logger.info(&quot;Solicitud recibida en /api/v1/train/&quot;)
+
+        df = await run_in_threadpool(pd.read_csv, file.file)
+        logger.info(f&quot;Datos recibidos: {df}&quot;)
+
+        logger.info(&quot;Iniciando el entrenamiento del modelo...&quot;)
+        resultado = await run_in_threadpool(train_model, df)
+
+        return {
+            &quot;message&quot;: &quot;Modelo entrenado con éxito&quot;,
+            &quot;details&quot;: resultado
+        }
+    except Exception as e:
+        logger.error(f&quot;Error en el entrenamiento: {str(e)}&quot;)
+        raise HTTPException(status_code=500, detail=f&quot;Error en el entrenamiento: {str(e)}&quot;)
+</code></pre>
+<h3 id="pipes-pipespkl">pipes <code>pipes/*.pkl</code></h3>
+<p>Stores the pre-processing pipeline files used by the model.</p>
+<pre><code class="language-yaml">pipes/
+  ├── pipeline_1.pkl           # Pipeline file for step 1
+  ├── pipeline_2.pkl           # Pipeline file for step 2
+  ├── pipeline_3.pkl           # Pipeline file for step 3
+  ├── pipeline_4.pkl           # Pipeline file for step 4
+  └── pipeline_5.pkl           # Pipeline file for step 5
+# 1 directory, 5 files
+</code></pre>
+<h3 id="models-modelslinear_regressionpkl">models <code>models/linear_regression.pkl</code></h3>
+<p>Contains the machine learning model files.</p>
+<pre><code class="language-yaml">models/
+  ├── __init__.py              # Initialization file for Python package
+  ├── claim_model.py           # Code for claim model
+  ├── linear_regression.pkl    # Trained linear regression model
+  └── train_model.py           # Code for training the model
+# 1 directories, 4 files
+</code></pre>
+<h3 id="docs-docsmd">docs <code>docs/*.md</code></h3>
+<p>Documentation-related files for the project, including Markdown files for MkDocs.</p>
+<pre><code class="language-yaml">docs/
+  ├── api.md                   # API documentation
+  ├── commands.md              # Command line interface documentation
+  ├── configuration.md         # Configuration documentation
+  ├── coverage.md              # Coverage reports
+  ├── deploy.md                # Deployment guidelines
+  ├── images                   # Images used in documentation
+  │   ├── C1.png
+  │   ├── C2.png
+  │   ├── Coverag1.png
+  │   ├── Coverag2.png
+  │   ├── Coverag3.png
+  │   ├── d1.png
+  │   ├── d2.png
+  │   └── d3.png
+  ├── index.md                 # Index page for MkDocs
+  ├── licence.md               # License information
+  ├── stress_test.md           # Stress testing documentation
+  └── unit_test.md             # Unit testing documentation
+# 1 directories, 14 files
+</code></pre>
+<h3 id="data-data">data <code>data/*</code></h3>
+<p>Directory for storing datasets used for training and testing the models.</p>
+<pre><code class="language-yaml">data/
+  ├── claims_dataset.csv       # Dataset with claims data
+  └── config.yaml              # Configuration for dataset
+# 1 directory, 2 files
+</code></pre>
+<h3 id="config-configconfigyaml">config <code>config/config.yaml</code></h3>
+<p>Holds configuration files, such as YAML files specifying the application settings.</p>
+<pre><code class="language-yaml">config/
+  └── config.yaml              # Main application configuration file
+# 1 directory, 1 file
+</code></pre>
+<h3 id="artifacts-artifactsimputationsjson">artifacts <code>artifacts/imputations.json</code></h3>
+<p>Contains intermediate artifacts generated during model training and preprocessing, such as imputation details or temporary data.</p>
+<pre><code class="language-yaml">artifacts/
+  └── imputations.json         # Imputation details
+# 1 directory, 1 file
+</code></pre>
+<h3 id="modules">modules</h3>
+<p>Contains various utility modules used throughout the project.</p>
+<pre><code class="language-yaml">modules/
+  ├── __init__.py              # Initialization file for Python package
+  ├── config_manager.py        # Configuration management utility
+  ├── imputation.py            # Data imputation utility
+  ├── logger_manager.py        # Logging configuration and management
+  ├── mlflow.py                # ML model loading and saving functions
+  └── preprocessing.py         # Data preprocessing functions
+# 1 directory, 6 files
+</code></pre>
+<h4 id="detailed-descriptions-of-principal-codes">Detailed Descriptions of Principal Codes:</h4>
+<h5 id="modules__init__py"><code>modules/__init__.py</code></h5>
+<p>Initialization file to make the <code>modules</code> directory a valid Python package:</p>
+<pre><code class="language-python"># modules/__init__.py
+</code></pre>
+<h5 id="modulesconfig_managerpy"><code>modules/config_manager.py</code></h5>
+<p>Manages the configuration of the application using Hydra:</p>
+<pre><code class="language-python">import hydra
+from omegaconf import DictConfig
+
+def init_config() -&gt; DictConfig:
+    &quot;&quot;&quot;
+    Initialize and return the Hydra configuration.
+    &quot;&quot;&quot;
+    return OmegaConf.load('config/config.yaml')
+</code></pre>
+<h3 id="app">app</h3>
+<p>Main application code directory <code>app/main.py</code>. Contains sub-directories and modules necessary for running the application.</p>
+<pre><code class="language-yaml">app/
+  └── main.py            # Main application entry point
+# 1 directory, 1 file
+</code></pre>
+<h4 id="principal-code-mainpy">Principal Code: <code>main.py</code></h4>
+<p>The <code>main.py</code> file contains the main entry point for the FastAPI application. It sets up and initializes the application configuration, logging, and routes. The key functions and components include:</p>
+<ul>
+<li><strong>FastAPI Initialization:</strong> Sets up the FastAPI application instance.</li>
+<li><strong>Custom OpenAPI Schema:</strong> Loads the OpenAPI schema from a YAML file.</li>
+<li><strong>Configuration Initialization:</strong> Loads application configuration using Hydra.</li>
+<li><strong>Logger Initialization:</strong> Configures and sets up the global logger.</li>
+<li><strong>Route Inclusion:</strong> Adds prediction and training routes to the FastAPI application.</li>
+</ul>
+<p>Example usage:</p>
+<pre><code class="language-python">import numpy as np
+import pandas as pd
+import uvicorn
+from fastapi import FastAPI
+import yaml  # Use PyYAML to parse YAML content
+
+from modules import init_config, setup_logger, get_logger
+from routes import predict, train
+
+# Initialize FastAPI
+app = FastAPI()
+
+def custom_openapi():
+    # Assuming swagger.yaml is in the /app/docs/ directory
+    if app.openapi_schema:
+        return app.openapi_schema
+    with open(&quot;/app/docs/swagger.yaml&quot;, &quot;r&quot;) as file:
+        swagger_content = yaml.safe_load(file)  # Use yaml.safe_load to load the YAML file
+    app.openapi_schema = swagger_content
+    return swagger_content  # Directly return the dictionary
+
+app.openapi = custom_openapi
+
+# Initialize configuration
+cfg = init_config()
+app.state.cfg = cfg
+
+# Initialize logger
+setup_logger(cfg)
+app.state.logger = get_logger()
+app.state.logger.info(&quot;Logger initialized in global mode.&quot;)
+
+# Add routes
+app.include_router(predict)
+app.include_router(train)
+
+@app.get(&quot;/&quot;)
+def root():
+    return {&quot;message&quot;: &quot;Welcome to the HDI Claims Prediction API&quot;}
+
+if __name__ == &quot;__main__&quot;:
+    imputacion_path = cfg.pipeline.imputacion_path
+    print(f&quot;Using the imputation file located at: {imputacion_path}&quot;)
+
+    # Start FastAPI
+    uvicorn.run(app, host=cfg.api.host, port=cfg.api.port)
+</code></pre>
+<h3 id="key-components">Key Components</h3>
+<ol>
+<li>
+<p><strong>FastAPI Initialization:</strong></p>
+<ul>
+<li>The <code>FastAPI</code> class is imported and an instance is created which will serve as the main application object.</li>
+</ul>
+</li>
+<li>
+<p><strong>Custom OpenAPI Schema:</strong></p>
+<ul>
+<li>The <code>custom_openapi</code> function loads the OpenAPI schema from a <code>swagger.yaml</code> file located in the <code>/app/docs/</code> directory using PyYAML's <code>safe_load</code> method to parse the YAML content.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configuration Initialization:</strong></p>
+<ul>
+<li>The <code>init_config</code> function loads the application configuration using Hydra. The configuration object is stored in the state of the FastAPI application.</li>
+</ul>
+<p><code>python
+cfg = init_config()
+app.state.cfg = cfg</code></p>
+</li>
+<li>
+<p><strong>Logger Initialization:</strong></p>
+<ul>
+<li>The <code>setup_logger</code> function is used to set up the logging configuration based on the loaded application configuration. The logger is then retrieved and stored in the state of the FastAPI application.</li>
+</ul>
+<p><code>python
+setup_logger(cfg)
+app.state.logger = get_logger()
+app.state.logger.info("Logger initialized in global mode.")</code></p>
+</li>
+<li>
+<p><strong>Route Inclusion:</strong></p>
+<ul>
+<li>The <code>predict</code> and <code>train</code> routers are imported and included in the FastAPI application. These routers define the endpoints for prediction and training functionality.</li>
+</ul>
+<p><code>python
+app.include_router(predict)
+app.include_router(train)</code></p>
+</li>
+<li>
+<p><strong>Root Endpoint:</strong></p>
+<ul>
+<li>A root endpoint is defined to return a welcome message.</li>
+</ul>
+<p><code>python
+@app.get("/")
+def root():
+    return {"message": "Welcome to the HDI Claims Prediction API"}</code></p>
+</li>
+<li>
+<p><strong>Application Entry Point:</strong></p>
+<ul>
+<li>The <code>if __name__ == "__main__":</code> block allows the FastAPI application to be run directly. It prints the path to the imputation file and starts the FastAPI server using <code>uvicorn</code>.</li>
+</ul>
+<p>```python
+if <strong>name</strong> == "<strong>main</strong>":
+    imputacion_path = cfg.pipeline.imputacion_path
+    print(f"Using the imputation file located at: {imputacion_path}")</p>
+<pre><code># Start FastAPI
+uvicorn.run(app, host=cfg.api.host, port=cfg.api.port)
+</code></pre>
+<p>```</p>
+</li>
+</ol>
+<hr />
+<h2 id="deployment-instructions">Deployment Instructions</h2>
+<p>For detailed deployment instructions, please refer to the <a href="https://jarb29.github.io/hdi-reto/deploy/">Deployment Guide</a> in the <code>docs</code> directory. </p>
+<hr />
+<h2 id="common-issues-and-troubleshooting">Common Issues and Troubleshooting</h2>
+<h3 id="issue-model-not-loading">Issue: Model Not Loading</h3>
+<p>If the model is not loading, ensure the <code>model_path</code> in the configuration file <code>config/config.yaml</code> is correct and the model file exists at the specified location.</p>
+<h3 id="issue-api-not-starting">Issue: API Not Starting</h3>
+<p>If the API is not starting, check the host and port settings in the <code>api</code> section of the configuration file and ensure there are no conflicts with other services running on the same port.</p>
+<hr />
+<h2 id="glossary">Glossary</h2>
+<ul>
+<li><strong>Imputation:</strong> The process of filling in missing data with substituted values.</li>
+<li><strong>Pipeline:</strong> A sequence of data processing steps.</li>
+<li><strong>Logger:</strong> A tool used to record messages and track events within an application.</li>
+<li><strong>API:</strong> Application Programming Interface, a set of functions allowing the creation of applications that access features or data of an operating system, application, or service.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../initialization/" class="btn btn-neutral float-left" title="Initialization Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../api/" class="btn btn-neutral float-right" title="API Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../initialization/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../api/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

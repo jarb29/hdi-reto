@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Quick Start Guide - HDI Challenge Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Quick Start Guide";
+        var mkdocs_page_input_path = "quickstart.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HDI Challenge Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Quick Start Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#initial-setup-create-directory-and-clone-repository">Initial Setup: Create Directory and Clone Repository</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-create-directory">Step 1: Create Directory</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-clone-the-repository">Step 2: Clone the Repository</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-make-commands">Using make Commands</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-build-docker-image">Step 1: Build Docker Image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-deploy-the-application">Step 2: Deploy the Application</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-stop-the-deployed-application">Step 3: Stop the Deployed Application</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-docker-compose-commands-directly">Using docker-compose Commands Directly</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-build-docker-image_1">Step 1: Build Docker Image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-deploy-the-application_1">Step 2: Deploy the Application</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-stop-the-deployed-application_1">Step 3: Stop the Deployed Application</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-docker-issues">Troubleshooting Docker Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#check-docker-service">Check Docker Service</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verify-docker-installation">Verify Docker Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#check-docker-permissions">Check Docker Permissions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inspect-docker-logs">Inspect Docker Logs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#network-issues">Network Issues</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#prune-docker-system">Prune Docker System</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../initialization/">Initialization Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../configuration/">Project Configuration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commands/">Command Line Interface</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../deploy/">Standard Deployment Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../stress_test/">Load Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unit_test/">Unit Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../coverage/">Coverage Test</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bandit/">Security Analysis</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../licence/">License Agreement</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HDI Challenge Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Quick Start Guide</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="quick-start-guide-docker">Quick Start Guide: Docker</h1>
+<p>This guide will help you get started with building and deploying your application using Docker. It includes instructions for both using <code>make</code> and directly with <code>docker-compose</code>. Additionally, troubleshooting steps are provided if you encounter issues with Docker.</p>
+<p><strong>Repository:</strong> <a href="https://github.com/jarb29/hdi-reto">https://github.com/jarb29/hdi-reto</a></p>
+<hr />
+<h2 id="initial-setup-create-directory-and-clone-repository">Initial Setup: Create Directory and Clone Repository</h2>
+<h3 id="step-1-create-directory">Step 1: Create Directory</h3>
+<p>Create a directory for your project:</p>
+<pre><code class="language-bash">mkdir my_project
+cd my_project
+</code></pre>
+<h3 id="step-2-clone-the-repository">Step 2: Clone the Repository</h3>
+<p>Clone the repository:</p>
+<pre><code class="language-bash">git clone https://github.com/jarb29/hdi-reto
+cd yourrepository
+</code></pre>
+<hr />
+<h2 id="using-make-commands">Using <code>make</code> Commands</h2>
+<h3 id="step-1-build-docker-image">Step 1: Build Docker Image</h3>
+<p>Inside the directory, run:</p>
+<pre><code class="language-bash">make build
+</code></pre>
+<h3 id="step-2-deploy-the-application">Step 2: Deploy the Application</h3>
+<p>Inside the directory, run:</p>
+<pre><code class="language-bash">make deploy
+</code></pre>
+<h3 id="step-3-stop-the-deployed-application">Step 3: Stop the Deployed Application</h3>
+<p>Inside the directory, run:</p>
+<pre><code class="language-bash">make deploy-stop
+</code></pre>
+<hr />
+<h2 id="using-docker-compose-commands-directly">Using <code>docker-compose</code> Commands Directly</h2>
+<h3 id="step-1-build-docker-image_1">Step 1: Build Docker Image</h3>
+<p>Inside the directory, run:</p>
+<pre><code class="language-bash">docker-compose build
+</code></pre>
+<h3 id="step-2-deploy-the-application_1">Step 2: Deploy the Application</h3>
+<p>Inside the directory, run:</p>
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+<h3 id="step-3-stop-the-deployed-application_1">Step 3: Stop the Deployed Application</h3>
+<p>Inside the directory, run:</p>
+<pre><code class="language-bash">docker-compose down
+</code></pre>
+<hr />
+<h2 id="troubleshooting-docker-issues">Troubleshooting Docker Issues</h2>
+<p>If Docker does not work as expected, follow these steps to diagnose and resolve common issues.</p>
+<hr />
+<h3 id="check-docker-service">Check Docker Service</h3>
+<p>Ensure that the Docker service is running.</p>
+<ul>
+<li><strong>On Windows:</strong></li>
+<li>Open Docker Desktop and check the status.</li>
+<li><strong>On macOS:</strong></li>
+<li>Open Docker Desktop and check the status.</li>
+<li><strong>On Linux:</strong></li>
+</ul>
+<p><code>bash
+  sudo systemctl status docker</code></p>
+<p>If the service is not running, you can start it with:</p>
+<pre><code class="language-bash">sudo systemctl start docker
+</code></pre>
+<hr />
+<h3 id="verify-docker-installation">Verify Docker Installation</h3>
+<p>Check if Docker is installed and running correctly:</p>
+<pre><code class="language-bash">docker --version
+docker-compose --version
+</code></pre>
+<hr />
+<h3 id="check-docker-permissions">Check Docker Permissions</h3>
+<p>Ensure your user has the necessary permissions to run Docker commands.</p>
+<ul>
+<li><strong>On Linux</strong>, you might need to add your user to the <code>docker</code> group:</li>
+</ul>
+<p><code>bash
+  sudo usermod -aG docker $USER</code></p>
+<p>After running the above command, log out and log in again or restart your computer.</p>
+<hr />
+<h3 id="inspect-docker-logs">Inspect Docker Logs</h3>
+<p>Check Docker logs for any errors:</p>
+<pre><code class="language-bash">docker logs &lt;container_id_or_name&gt;
+</code></pre>
+<hr />
+<h3 id="network-issues">Network Issues</h3>
+<p>Ensure that you have a stable network connection as Docker requires internet access to download images.</p>
+<hr />
+<h3 id="prune-docker-system">Prune Docker System</h3>
+<p>Clean up any unused data which might be causing issues:</p>
+<pre><code class="language-bash">docker system prune -af
+</code></pre>
+<hr />
+<p>By following these steps, you can effectively manage your application deployment with Docker using both <code>make</code> and direct <code>docker-compose</code> commands. If you encounter any issues, the troubleshooting section will help you diagnose and resolve common problems.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../initialization/" class="btn btn-neutral float-right" title="Initialization Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../initialization/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
