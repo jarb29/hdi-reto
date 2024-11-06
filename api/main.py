@@ -1,5 +1,3 @@
-import numpy as np
-import pandas as pd
 import uvicorn
 from fastapi import FastAPI
 import yaml  # Use PyYAML to parse YAML content
@@ -10,15 +8,10 @@ from routes import predict, train
 # Inicialize FastAPI
 app = FastAPI()
 
-
-
-
 # Inicialize configuration
 cfg = init_config()
 
 app.state.cfg = cfg
-
-
 def custom_openapi():
     cf = app.state.cfg
     if app.openapi_schema:
@@ -32,8 +25,6 @@ def custom_openapi():
         # Log the error and provide an informative response
         app.state.logger.error(f"Error loading OpenAPI schema from file {cf['api']['doc']}", exc_info=True)
         return JSONResponse({"error": f"Failed to load OpenAPI schema: {str(e)}"}, status_code=500)
-
-
 
 # Set the custom OpenAPI generation function
 app.openapi = custom_openapi
